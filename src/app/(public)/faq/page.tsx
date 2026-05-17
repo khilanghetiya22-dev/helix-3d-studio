@@ -4,8 +4,8 @@ import { ArrowRight } from 'lucide-react';
 import FAQAccordion from './FAQAccordion';
 
 export const metadata = {
-  title: 'FAQ — FORMIQ 3D Print Studio',
-  description: 'Find answers to common questions about FORMIQ — pricing, file formats, technologies, shipping, and more.',
+  title: 'FAQ — HELIX 3D Studio',
+  description: 'Find answers to common questions about HELIX — pricing, file formats, technologies, shipping, and more.',
 };
 
 
@@ -86,7 +86,7 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
       },
       {
         q: 'What if my order arrives damaged?',
-        a: 'Contact us at hello@formiq.studio within 48 hours of delivery with photos. We\'ll arrange a free reprint or refund depending on the situation.',
+        a: 'Contact us at hello@helix.studio within 48 hours of delivery with photos. We\'ll arrange a free reprint or refund depending on the situation.',
       },
     ],
   },
@@ -113,22 +113,22 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
 
 export default function FAQPage() {
   return (
-    <div style={{ backgroundColor: '#1A1A1A' }}>
+    <div style={{ backgroundColor: '#0A0A0F' }}>
 
       {/* Hero */}
       <section className="relative overflow-hidden py-24 sm:py-28">
         <div className="grid-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#C9920A', letterSpacing: '0.2em' }}>
+          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
             Help Centre
           </p>
-          <h1 className="page-heading text-4xl sm:text-5xl mb-6" style={{ color: '#F5F4F0' }}>
-            Frequently Asked <span style={{ color: '#C9920A' }}>Questions</span>
+          <h1 className="page-heading text-4xl sm:text-5xl mb-6" style={{ color: '#F5F0E8' }}>
+            Frequently Asked <span style={{ color: '#C9A84C' }}>Questions</span>
           </h1>
           <div className="gold-rule w-16 mx-auto mb-6" />
           <p className="text-base leading-relaxed" style={{ color: '#9CA3AF' }}>
-            Everything you need to know about FORMIQ. Can&apos;t find what you&apos;re looking for?{' '}
-            <Link href="/contact" className="transition-colors" style={{ color: '#C9920A' }}>
+            Everything you need to know about HELIX. Can&apos;t find what you&apos;re looking for?{' '}
+            <Link href="/contact" className="transition-colors" style={{ color: '#C9A84C' }}>
               Contact our team →
             </Link>
           </p>
@@ -141,7 +141,7 @@ export default function FAQPage() {
           {faqs.map((section) => (
             <div key={section.category}>
               <div className="flex items-center gap-4 mb-6">
-                <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#C9920A' }}>
+                <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#C9A84C' }}>
                   {section.category}
                 </h2>
                 <div className="flex-1 gold-rule" />
@@ -159,7 +159,7 @@ export default function FAQPage() {
       {/* CTA */}
       <section className="py-16" style={{ backgroundColor: 'rgba(27,42,74,0.15)' }}>
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F4F0' }}>
+          <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F0E8' }}>
             Still Have Questions?
           </h2>
           <p className="mb-8" style={{ color: '#9CA3AF' }}>
@@ -169,14 +169,14 @@ export default function FAQPage() {
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium rounded-lg transition-all btn-glow"
-              style={{ backgroundColor: '#C9920A', color: '#1A1A1A', letterSpacing: '0.04em' }}
+              style={{ backgroundColor: '#C9A84C', color: '#0A0A0F', letterSpacing: '0.04em' }}
             >
               Contact Us <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/signup"
               className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium rounded-lg transition-all"
-              style={{ border: '1px solid rgba(201,146,10,0.3)', color: '#9CA3AF' }}
+              style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#9CA3AF' }}
             >
               Create Free Account
             </Link>

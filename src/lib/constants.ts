@@ -1,4 +1,4 @@
-// Constants for FORMIQ 3D Print Studio
+// Constants for HELIX 3D Studio
 
 import { StepperStep } from './types';
 
@@ -16,7 +16,7 @@ export const MATERIALS = [
 
 export const COLORS = [
   { value: 'white', label: 'White', hex: '#FFFFFF' },
-  { value: 'black', label: 'Black', hex: '#1A1A1A' },
+  { value: 'black', label: 'Black', hex: '#0A0A0F' },
   { value: 'gray', label: 'Gray', hex: '#6B7280' },
   { value: 'red', label: 'Red', hex: '#EF4444' },
   { value: 'blue', label: 'Blue', hex: '#3B82F6' },

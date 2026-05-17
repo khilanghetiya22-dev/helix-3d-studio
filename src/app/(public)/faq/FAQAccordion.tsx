@@ -9,8 +9,8 @@ export default function FAQAccordion({ q, a }: { q: string; a: string }) {
     <div
       className="rounded-xl overflow-hidden transition-all duration-300"
       style={{
-        backgroundColor: '#1B2A4A',
-        border: `1px solid ${open ? 'rgba(201,146,10,0.4)' : 'rgba(201,146,10,0.12)'}`,
+        backgroundColor: '#0D1B2A',
+        border: `1px solid ${open ? 'rgba(201,168,76,0.4)' : 'rgba(201,168,76,0.12)'}`,
       }}
     >
       <button
@@ -18,12 +18,12 @@ export default function FAQAccordion({ q, a }: { q: string; a: string }) {
         className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
         aria-expanded={open}
       >
-        <span className="text-sm font-medium" style={{ color: '#F5F4F0', letterSpacing: '0.02em' }}>
+        <span className="text-sm font-medium" style={{ color: '#F5F0E8', letterSpacing: '0.02em' }}>
           {q}
         </span>
         <ChevronDown
           className="w-4 h-4 flex-shrink-0 transition-transform duration-300"
-          style={{ color: '#C9920A', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
+          style={{ color: '#C9A84C', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
         />
       </button>
       {open && (

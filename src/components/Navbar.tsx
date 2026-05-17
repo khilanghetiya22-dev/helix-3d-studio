@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { LogOut, Menu, X, User, Shield, Settings, Truck } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
-import FormiqWordmark from '@/components/brand/FormiqWordmark';
-import FormiqIcon from '@/components/brand/FormiqIcon';
+import HelixWordmark from '@/components/brand/HelixWordmark';
+import HelixIcon from '@/components/brand/HelixIcon';
 import type { Profile } from '@/lib/types';
 
 interface NavbarProps {
@@ -30,15 +30,15 @@ export default function Navbar({ user }: NavbarProps) {
     <nav
       className="sticky top-0 z-50"
       style={{
-        backgroundColor: '#1A1A1A',
-        borderBottom: '0.5px solid rgba(201,146,10,0.25)',
+        backgroundColor: '#0A0A0F',
+        borderBottom: '0.5px solid rgba(201,168,76,0.25)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <FormiqIcon size={32} variant="dark" className="group-hover:opacity-80 transition-opacity" />
-            <FormiqWordmark size="sm" />
+            <HelixIcon size={32} variant="dark" className="group-hover:opacity-80 transition-opacity" />
+            <HelixWordmark size="sm" />
           </Link>
 
           {user && (
@@ -48,9 +48,9 @@ export default function Navbar({ user }: NavbarProps) {
                 href="/orders/new"
                 className="ml-2 px-4 py-1.5 text-sm font-medium rounded-lg transition-all"
                 style={{
-                  border: '1px solid #C9920A',
-                  color: pathname === '/orders/new' ? '#1A1A1A' : '#C9920A',
-                  backgroundColor: pathname === '/orders/new' ? '#C9920A' : 'transparent',
+                  border: '1px solid #C9A84C',
+                  color: pathname === '/orders/new' ? '#0A0A0F' : '#C9A84C',
+                  backgroundColor: pathname === '/orders/new' ? '#C9A84C' : 'transparent',
                   letterSpacing: '0.04em',
                 }}
               >
@@ -75,12 +75,12 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="hidden md:flex items-center gap-3">
             {user ? (
               <>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.15)' }}>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,146,10,0.15)' }}>
-                    <User className="w-4 h-4" style={{ color: '#C9920A' }} />
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}>
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,168,76,0.15)' }}>
+                    <User className="w-4 h-4" style={{ color: '#C9A84C' }} />
                   </div>
                   <div className="text-sm">
-                    <p className="font-medium leading-none" style={{ color: '#F5F4F0' }}>{user.full_name}</p>
+                    <p className="font-medium leading-none" style={{ color: '#F5F0E8' }}>{user.full_name}</p>
                     <p className="text-xs leading-none mt-0.5" style={{ color: '#6B6B6B' }}>{isAdmin ? 'Admin' : 'Customer'}</p>
                   </div>
                 </div>
@@ -95,8 +95,8 @@ export default function Navbar({ user }: NavbarProps) {
                   href="/signup"
                   className="px-4 py-2 text-sm font-medium rounded-lg transition-all"
                   style={{
-                    backgroundColor: '#C9920A',
-                    color: '#1A1A1A',
+                    backgroundColor: '#C9A84C',
+                    color: '#0A0A0F',
                     letterSpacing: '0.04em',
                   }}
                 >
@@ -106,22 +106,22 @@ export default function Navbar({ user }: NavbarProps) {
             )}
           </div>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg transition-all" style={{ color: '#F5F4F0' }}>
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg transition-all" style={{ color: '#F5F0E8' }}>
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden px-4 py-4 space-y-1 animate-slide-down" style={{ borderTop: '0.5px solid rgba(201,146,10,0.15)', backgroundColor: '#1A1A1A' }}>
+        <div className="md:hidden px-4 py-4 space-y-1 animate-slide-down" style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)', backgroundColor: '#0A0A0F' }}>
           {user ? (
             <>
-              <div className="flex items-center gap-3 px-3 py-3 mb-3 rounded-lg" style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.15)' }}>
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,146,10,0.15)' }}>
-                  <User className="w-5 h-5" style={{ color: '#C9920A' }} />
+              <div className="flex items-center gap-3 px-3 py-3 mb-3 rounded-lg" style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,168,76,0.15)' }}>
+                  <User className="w-5 h-5" style={{ color: '#C9A84C' }} />
                 </div>
                 <div>
-                  <p className="font-medium" style={{ color: '#F5F4F0' }}>{user.full_name}</p>
+                  <p className="font-medium" style={{ color: '#F5F0E8' }}>{user.full_name}</p>
                   <p className="text-xs" style={{ color: '#6B6B6B' }}>{user.email}</p>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function Navbar({ user }: NavbarProps) {
               {isAdmin && <MobLink href="/admin/orders" close={() => setMenuOpen(false)}>🛡️ Admin Panel</MobLink>}
               {isAdmin && <MobLink href="/admin/settings/materials" close={() => setMenuOpen(false)}>⚙️ Materials</MobLink>}
               {isAdmin && <MobLink href="/admin/settings/shipping" close={() => setMenuOpen(false)}>🚚 Shipping</MobLink>}
-              <button onClick={handleLogout} className="w-full text-left px-3 py-2.5 rounded-lg text-sm mt-2" style={{ color: '#C9920A' }}>Sign Out</button>
+              <button onClick={handleLogout} className="w-full text-left px-3 py-2.5 rounded-lg text-sm mt-2" style={{ color: '#C9A84C' }}>Sign Out</button>
             </>
           ) : (
             <>
@@ -150,8 +150,8 @@ function NavLink({ href, active, children }: { href: string; active: boolean; ch
       href={href}
       className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-all"
       style={{
-        color: active ? '#C9920A' : '#9CA3AF',
-        borderBottom: active ? '1px solid #C9920A' : '1px solid transparent',
+        color: active ? '#C9A84C' : '#9CA3AF',
+        borderBottom: active ? '1px solid #C9A84C' : '1px solid transparent',
         letterSpacing: '0.02em',
       }}
     >

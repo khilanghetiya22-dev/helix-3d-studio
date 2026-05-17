@@ -1,88 +1,121 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Cpu, Droplets, Zap, Layers, Box, Printer } from 'lucide-react';
+import { ArrowRight, Cpu, Droplets, Zap, Layers, Box, Printer, Package } from 'lucide-react';
+import Footer from '@/components/brand/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata = {
-  title: 'Services — FORMIQ 3D Print Studio',
-  description: 'Explore FORMIQ\'s full-spectrum 3D printing services: FDM, SLA, DLP, SLS, DMLS, PolyJet and Binder Jetting — across 19+ materials.',
+  title: 'Services — HELIX 3D Studio',
+  description: 'Explore HELIX\'s full-spectrum 3D printing services: FDM, SLA, DLP, SLS, DMLS, PolyJet and Binder Jetting — across 19+ materials. Ships pan-India in 3–14 days.',
 };
 
 const technologies = [
   {
-    slug: 'FDM',
+    slug: 'fdm',
+    shortName: 'FDM',
     name: 'Fused Deposition Modeling',
     icon: <Printer className="w-6 h-6" />,
     badge: 'Most Popular',
-    desc: 'Melts and extrudes thermoplastic filament layer by layer. The workhorse of 3D printing — fast, affordable, and incredibly versatile.',
+    desc: 'Melts and extrudes thermoplastic filament layer by layer. The workhorse of 3D printing — fast, affordable, and incredibly versatile. Ideal for functional prototypes, custom jigs, and consumer products.',
     bestFor: 'Prototypes, jigs, fixtures, concept models, consumer products',
-    materials: ['PLA', 'ABS', 'PETG', 'TPU', 'Nylon', 'Carbon Fiber Fill'],
+    materials: ['PLA', 'ABS', 'PETG', 'TPU', 'Nylon'],
     specs: ['Layer resolution: 0.1–0.3 mm', 'Build volume: up to 300×300×400 mm', 'Accuracy: ±0.2 mm'],
+    turnaround: '2–4 business days',
+    startingFrom: 49,
   },
   {
-    slug: 'SLA',
+    slug: 'sla',
+    shortName: 'SLA',
     name: 'Stereolithography',
     icon: <Droplets className="w-6 h-6" />,
     badge: 'High Detail',
-    desc: 'A UV laser cures liquid resin layer by layer to produce ultra-smooth, highly detailed parts with exceptional surface finish.',
+    desc: 'A UV laser cures liquid resin layer by layer to produce ultra-smooth, highly detailed parts with exceptional surface finish. Best for jewellery, dental models, and intricate miniatures.',
     bestFor: 'Jewellery, dental models, miniatures, master patterns for casting',
     materials: ['Standard Resin', 'Tough Resin', 'Flexible Resin'],
     specs: ['Layer resolution: 0.025–0.1 mm', 'Build volume: up to 145×145×175 mm', 'Accuracy: ±0.05 mm'],
+    turnaround: '3–5 business days',
+    startingFrom: 120,
   },
   {
-    slug: 'DLP',
+    slug: 'dlp',
+    shortName: 'DLP',
     name: 'Digital Light Processing',
     icon: <Zap className="w-6 h-6" />,
     badge: 'Fast Resin',
-    desc: 'Projects an entire UV image at once to cure resin, making it faster than SLA while maintaining excellent surface quality.',
+    desc: 'Projects an entire UV image at once to cure resin, making it faster than SLA while maintaining excellent surface quality. Great for dental and orthodontic models and intricate art pieces.',
     bestFor: 'Dental & ortho models, earbuds, intricate art pieces',
     materials: ['ABS-like Resin', 'Castable Resin'],
     specs: ['Layer resolution: 0.025–0.05 mm', 'Build volume: up to 120×67×150 mm', 'Accuracy: ±0.05 mm'],
+    turnaround: '3–5 business days',
+    startingFrom: 108,
   },
   {
-    slug: 'SLS',
+    slug: 'sls',
+    shortName: 'SLS',
     name: 'Selective Laser Sintering',
     icon: <Layers className="w-6 h-6" />,
     badge: 'No Supports',
-    desc: 'A laser sinters powdered nylon into strong, complex parts. No support structures needed — ideal for interlocked and organic geometries.',
+    desc: 'A laser sinters powdered nylon into strong, complex parts. No support structures needed — ideal for interlocked and organic geometries. Parts are fully functional and can be assembled.',
     bestFor: 'End-use parts, complex assemblies, aerospace & automotive components',
-    materials: ['Nylon PA12', 'Glass-filled Nylon'],
+    materials: ['Nylon PA12', 'Glass-filled Nylon', 'TPU'],
     specs: ['Layer resolution: 0.1 mm', 'Build volume: up to 340×340×600 mm', 'Accuracy: ±0.3 mm'],
+    turnaround: '4–7 business days',
+    startingFrom: 198,
   },
   {
-    slug: 'DMLS',
+    slug: 'dmls',
+    shortName: 'DMLS',
     name: 'Direct Metal Laser Sintering',
     icon: <Cpu className="w-6 h-6" />,
     badge: 'Metal Parts',
-    desc: 'Fuses metal powder using a high-power laser to create fully dense metal parts that can be machined, welded, and heat-treated.',
+    desc: 'Fuses metal powder using a high-power laser to create fully dense metal parts that can be machined, welded, and heat-treated. Used in aerospace, medical, and high-performance engineering.',
     bestFor: 'Aerospace, medical implants, tooling, heat exchangers',
-    materials: ['Stainless Steel', 'Titanium', 'Aluminium'],
+    materials: ['Stainless Steel', 'Titanium', 'Aluminium', 'Inconel'],
     specs: ['Layer resolution: 0.02–0.05 mm', 'Build volume: up to 250×250×325 mm', 'Accuracy: ±0.1 mm'],
+    turnaround: '7–14 business days',
+    startingFrom: 800,
   },
   {
-    slug: 'PolyJet',
+    slug: 'polyjet',
+    shortName: 'PolyJet',
     name: 'PolyJet / Multi-Material Jetting',
     icon: <Box className="w-6 h-6" />,
     badge: 'Multi-Material',
-    desc: 'Jets and UV-cures photopolymer droplets to create ultra-smooth, full-colour multi-material parts in a single build.',
+    desc: 'Jets and UV-cures photopolymer droplets to create ultra-smooth, full-colour multi-material parts in a single build. Unmatched for realistic prototypes and medical anatomical models.',
     bestFor: 'Realistic prototypes, over-moulded parts, medical anatomical models',
-    materials: ['Rigid', 'Flexible', 'Multi-material'],
+    materials: ['Rigid', 'Flexible', 'Transparent', 'Rubber-like'],
     specs: ['Layer resolution: 0.016 mm', 'Build volume: up to 490×390×200 mm', 'Accuracy: ±0.1 mm'],
+    turnaround: '5–8 business days',
+    startingFrom: 295,
+  },
+  {
+    slug: 'binder-jetting',
+    shortName: 'Binder Jetting',
+    name: 'Binder Jetting',
+    icon: <Package className="w-6 h-6" />,
+    badge: 'Full Colour',
+    desc: 'A liquid binder is selectively deposited onto powder layers to create parts. Supports full-colour models and metal parts for sand casting patterns. Excellent for architectural and display models.',
+    bestFor: 'Full color models, sand casting patterns, architectural models',
+    materials: ['Sandstone', 'Stainless Steel', 'Sand'],
+    specs: ['Layer resolution: 0.1 mm', 'Build volume: up to 400×250×250 mm', 'Accuracy: ±0.3 mm'],
+    turnaround: '5–10 business days',
+    startingFrom: 200,
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div style={{ backgroundColor: '#1A1A1A' }}>
+    <div style={{ backgroundColor: '#0A0A0F' }}>
 
       {/* Hero */}
       <section className="relative overflow-hidden py-24 sm:py-32">
         <div className="grid-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#C9920A', letterSpacing: '0.2em' }}>
+          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
             7 Technologies · 19+ Materials
           </p>
-          <h1 className="page-heading text-4xl sm:text-5xl mb-6" style={{ color: '#F5F4F0' }}>
-            Our <span style={{ color: '#C9920A' }}>Services</span>
+          <h1 className="page-heading text-4xl sm:text-5xl mb-6" style={{ color: '#F5F0E8' }}>
+            Our <span style={{ color: '#C9A84C' }}>Services</span>
           </h1>
           <div className="gold-rule w-16 mx-auto mb-8" />
           <p className="text-base leading-relaxed max-w-2xl mx-auto" style={{ color: '#9CA3AF' }}>
@@ -92,28 +125,58 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Turnaround summary strip */}
+      <section className="py-6 border-t border-b" style={{ borderColor: 'rgba(201,168,76,0.15)', backgroundColor: 'rgba(27,42,74,0.2)' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center flex-wrap gap-6 justify-center">
+            {technologies.map((t) => (
+              <div key={t.slug} className="flex items-center gap-2 text-sm">
+                <span style={{ color: '#C9A84C', fontWeight: 500 }}>{t.shortName}</span>
+                <span style={{ color: '#6B6B6B' }}>·</span>
+                <span style={{ color: '#9CA3AF' }}>{t.turnaround}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Technology cards */}
       <section className="py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {technologies.map((tech, i) => (
             <div
               key={tech.slug}
-              className="rounded-xl p-8 card-hover group animate-fade-in"
-              style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.12)', animationDelay: `${i * 0.07}s` }}
+              id={tech.slug}
+              className="rounded-xl p-8 card-hover group animate-fade-in scroll-mt-20"
+              style={{
+                backgroundColor: '#0D1B2A',
+                border: '1px solid rgba(201,168,76,0.12)',
+                animationDelay: `${i * 0.07}s`,
+              }}
             >
               <div className="grid md:grid-cols-3 gap-8">
                 {/* Left: title + desc */}
                 <div className="md:col-span-2">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300" style={{ border: '1px solid #C9920A', color: '#C9920A' }}>
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+                      style={{ border: '1px solid #C9A84C', color: '#C9A84C' }}
+                    >
                       {tech.icon}
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
-                        <h2 className="text-lg font-light" style={{ color: '#F5F4F0', letterSpacing: '0.04em' }}>
-                          {tech.slug}
+                        <h2 className="text-lg font-light" style={{ color: '#F5F0E8', letterSpacing: '0.04em' }}>
+                          {tech.shortName}
                         </h2>
-                        <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: 'rgba(201,146,10,0.15)', color: '#C9920A', border: '1px solid rgba(201,146,10,0.3)' }}>
+                        <span
+                          className="text-xs px-2 py-0.5 rounded-full"
+                          style={{
+                            backgroundColor: 'rgba(201,168,76,0.15)',
+                            color: '#C9A84C',
+                            border: '1px solid rgba(201,168,76,0.3)',
+                          }}
+                        >
                           {tech.badge}
                         </span>
                       </div>
@@ -122,31 +185,56 @@ export default function ServicesPage() {
                   </div>
                   <p className="text-sm leading-relaxed mb-4" style={{ color: '#9CA3AF' }}>{tech.desc}</p>
                   <div>
-                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9920A' }}>Best For</p>
+                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9A84C' }}>Best For</p>
                     <p className="text-sm" style={{ color: '#9CA3AF' }}>{tech.bestFor}</p>
+                  </div>
+
+                  {/* Starting price + turnaround */}
+                  <div className="flex items-center gap-6 mt-5 pt-4" style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)' }}>
+                    <div>
+                      <p className="text-xs" style={{ color: '#6B6B6B' }}>Starting from</p>
+                      <p className="text-base font-medium mt-0.5" style={{ color: '#C9A84C' }}>₹{tech.startingFrom}</p>
+                    </div>
+                    <div style={{ width: '0.5px', height: '32px', backgroundColor: 'rgba(201,168,76,0.2)' }} />
+                    <div>
+                      <p className="text-xs" style={{ color: '#6B6B6B' }}>Typical turnaround</p>
+                      <p className="text-sm font-medium mt-0.5" style={{ color: '#F5F0E8' }}>{tech.turnaround}</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Right: materials + specs */}
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9920A' }}>Materials</p>
+                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9A84C' }}>Materials</p>
                     <div className="flex flex-wrap gap-2">
                       {tech.materials.map((m) => (
-                        <span key={m} className="text-xs px-2 py-1 rounded" style={{ backgroundColor: 'rgba(27,42,74,0.8)', color: '#9CA3AF', border: '1px solid rgba(201,146,10,0.1)' }}>
+                        <span
+                          key={m}
+                          className="text-xs px-2 py-1 rounded"
+                          style={{ backgroundColor: 'rgba(27,42,74,0.8)', color: '#9CA3AF', border: '1px solid rgba(201,168,76,0.1)' }}
+                        >
                           {m}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9920A' }}>Specs</p>
+                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: '#C9A84C' }}>Specs</p>
                     <ul className="space-y-1">
                       {tech.specs.map((s) => (
                         <li key={s} className="text-xs" style={{ color: '#6B6B6B' }}>· {s}</li>
                       ))}
                     </ul>
                   </div>
+              <Link
+                key={tech.slug}
+                href={`/orders/new/${tech.slug}`}
+                className="inline-flex items-center gap-1.5 text-xs font-medium transition-all"
+                style={{ color: '#C9A84C' }}
+              >
+                Order {tech.shortName} Print <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
                 </div>
               </div>
             </div>
@@ -154,14 +242,56 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Turnaround Times Table */}
+      <section className="py-16" style={{ backgroundColor: 'rgba(27,42,74,0.12)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="page-heading text-2xl sm:text-3xl mb-4 text-center" style={{ color: '#F5F0E8' }}>
+            Turnaround Times
+          </h2>
+          <div className="gold-rule w-12 mx-auto mb-8" />
+          <div
+            className="rounded-xl overflow-hidden"
+            style={{ border: '1px solid rgba(201,168,76,0.15)' }}
+          >
+            {technologies.map((tech, i) => (
+              <div
+                key={tech.slug}
+                className="flex items-center justify-between px-6 py-4"
+                style={{
+                  backgroundColor: i % 2 === 0 ? '#0D1B2A' : 'rgba(27,42,74,0.6)',
+                  borderBottom: i < technologies.length - 1 ? '0.5px solid rgba(201,168,76,0.1)' : 'none',
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-medium" style={{ color: '#C9A84C', minWidth: '80px' }}>
+                    {tech.shortName}
+                  </span>
+                  <span className="text-xs hidden sm:block" style={{ color: '#6B6B6B' }}>
+                    {tech.name}
+                  </span>
+                </div>
+                <span className="text-sm" style={{ color: '#9CA3AF' }}>{tech.turnaround}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-center mt-4" style={{ color: '#6B6B6B' }}>
+            Times are estimates and may vary based on order complexity and current queue.
+          </p>
+        </div>
+      </section>
+
       {/* File formats */}
       <section className="py-16" style={{ backgroundColor: 'rgba(27,42,74,0.15)' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F4F0' }}>Accepted File Formats</h2>
+          <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F0E8' }}>Accepted File Formats</h2>
           <div className="gold-rule w-16 mx-auto mb-8" />
           <div className="flex flex-wrap gap-3 justify-center">
-            {['STL', 'OBJ', 'STEP', 'STP', '3MF', 'AMF', 'IGES', 'IGS', 'F3D', 'SLDPRT', 'X_T', 'BREP', 'DAE', 'PLY', 'WRL', 'DXF'].map((f) => (
-              <span key={f} className="text-sm px-4 py-2 rounded-lg font-mono" style={{ backgroundColor: '#1B2A4A', color: '#C9920A', border: '1px solid rgba(201,146,10,0.2)' }}>
+            {['STL', 'OBJ', 'STEP', 'STP', '3MF', 'AMF', 'IGES', 'IGS', 'F3D', 'F3Z', 'SLDPRT', 'SLDASM', 'CATPART', 'X_T', 'X_B', 'DXF', 'DWG', 'PLY', 'GCODE', 'ZIP', 'RAR'].map((f) => (
+              <span
+                key={f}
+                className="text-sm px-4 py-2 rounded-lg font-mono"
+                style={{ backgroundColor: '#0D1B2A', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.2)' }}
+              >
                 .{f.toLowerCase()}
               </span>
             ))}
@@ -175,21 +305,27 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="py-20">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <div className="rounded-xl p-10" style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.2)' }}>
-            <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F4F0' }}>Start Your First Order</h2>
+          <div
+            className="rounded-xl p-10"
+            style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.2)' }}
+          >
+            <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F0E8' }}>Start Your First Order</h2>
             <p className="mb-8" style={{ color: '#9CA3AF' }}>
               Upload your design, get instant pricing, and place your order in minutes.
             </p>
             <Link
               href="/signup"
               className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium rounded-lg transition-all btn-glow"
-              style={{ backgroundColor: '#C9920A', color: '#1A1A1A', letterSpacing: '0.04em' }}
+              style={{ backgroundColor: '#C9A84C', color: '#0A0A0F', letterSpacing: '0.04em' }}
             >
               Get Started Free <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
       </section>
+
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

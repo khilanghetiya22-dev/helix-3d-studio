@@ -48,17 +48,17 @@ export default function Input({
           `}
           style={{
             backgroundColor: '#111',
-            borderColor: error ? '#C9920A' : 'rgba(201,146,10,0.2)',
-            color: '#F5F4F0',
+            borderColor: error ? '#C9A84C' : 'rgba(201,168,76,0.2)',
+            color: '#F5F0E8',
             ...(error ? {} : {}),
           }}
-          onFocus={(e) => { e.target.style.borderColor = '#C9920A'; e.target.style.boxShadow = '0 0 0 1px #C9920A'; }}
-          onBlur={(e) => { e.target.style.borderColor = error ? '#C9920A' : 'rgba(201,146,10,0.2)'; e.target.style.boxShadow = 'none'; }}
+          onFocus={(e) => { e.target.style.borderColor = '#C9A84C'; e.target.style.boxShadow = '0 0 0 1px #C9A84C'; }}
+          onBlur={(e) => { e.target.style.borderColor = error ? '#C9A84C' : 'rgba(201,168,76,0.2)'; e.target.style.boxShadow = 'none'; }}
           {...props}
         />
       </div>
       {error && (
-        <p className="text-xs flex items-center gap-1" style={{ color: '#C9920A' }}>
+        <p className="text-xs flex items-center gap-1" style={{ color: '#C9A84C' }}>
           <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>

@@ -11,7 +11,7 @@ import type { Address, OrderStatus } from './types';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_EMAIL = 'FORMIQ 3D Print Studio <onboarding@resend.dev>'; // Change to your verified domain
+const FROM_EMAIL = 'HELIX 3D Studio <onboarding@resend.dev>'; // Change to your verified domain
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 const ADMIN_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || '';
 

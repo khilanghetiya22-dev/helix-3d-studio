@@ -18,12 +18,12 @@ const iconMap: Record<string, React.ReactNode> = {
   'package-check': <PackageCheck className="w-5 h-5" />,
 };
 
-// FORMIQ brand status stepper — gold-branded per V7 spec
+// HELIX brand status stepper — gold-branded per V7 spec
 // Completed: gold filled | Current: gold outlined + glow | Upcoming: grey
-const GOLD = '#C9920A';
+const GOLD = '#C9A84C';
 const GREY = '#6B6B6B';
-const WHITE = '#F5F4F0';
-const NAVY = '#1B2A4A';
+const WHITE = '#F5F0E8';
+const NAVY = '#0D1B2A';
 
 export default function OrderStatusStepper({ currentStatus, className = '' }: OrderStatusStepperProps) {
   const currentIndex = ORDER_STATUSES.findIndex(s => s.key === currentStatus);
@@ -33,7 +33,7 @@ export default function OrderStatusStepper({ currentStatus, className = '' }: Or
       {/* Desktop: Horizontal */}
       <div className="hidden md:flex items-center justify-between relative">
         {/* Background line */}
-        <div className="absolute top-6 left-[10%] right-[10%] h-0.5" style={{ backgroundColor: 'rgba(201,146,10,0.15)' }} />
+        <div className="absolute top-6 left-[10%] right-[10%] h-0.5" style={{ backgroundColor: 'rgba(201,168,76,0.15)' }} />
         {/* Progress line — gold */}
         <div
           className="absolute top-6 left-[10%] h-0.5 transition-all duration-700 ease-out"
@@ -149,7 +149,7 @@ export default function OrderStatusStepper({ currentStatus, className = '' }: Or
                   <div
                     className="w-0.5 h-8 transition-all duration-500"
                     style={{
-                      backgroundColor: isCompleted ? GOLD : 'rgba(201,146,10,0.15)',
+                      backgroundColor: isCompleted ? GOLD : 'rgba(201,168,76,0.15)',
                     }}
                   />
                 )}

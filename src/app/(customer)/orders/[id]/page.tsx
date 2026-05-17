@@ -2,15 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import { redirect, notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { ArrowLeft, Download, FileText, MapPin, Calendar, Hash, TrendingUp, Cpu } from 'lucide-react';
+import { ArrowLeft, Download, FileText, MapPin, Calendar, Hash, TrendingUp, Cpu, Navigation } from 'lucide-react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import OrderStatusStepper from '@/components/OrderStatusStepper';
+import OrderStatusTimeline from '@/components/OrderStatusTimeline';
 import { STATUS_LABELS, MATERIALS, COLORS, QUALITY_OPTIONS } from '@/lib/constants';
 import { format } from 'date-fns';
 import type { Order, OrderStatus } from '@/lib/types';
 
-export const metadata = { title: 'Order Details — FORMIQ 3D Print Studio' };
+export const metadata = { title: 'Order Details — HELIX 3D Studio' };
 
 function formatBytes(bytes: number) {
   if (bytes === 0) return '0 B';
@@ -50,9 +51,18 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <Link href="/dashboard" className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors mb-6">
-        <ArrowLeft className="w-4 h-4" /> Back to Dashboard
-      </Link>
+      <div className="flex items-center justify-between mb-6">
+        <Link href="/orders" className="inline-flex items-center gap-1.5 text-sm transition-colors" style={{ color: '#9CA3AF', textDecoration: 'none' }}>
+          <ArrowLeft className="w-4 h-4" /> Back to My Orders
+        </Link>
+        <Link
+          href={`/orders/${id}/track`}
+          className="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-lg transition-all"
+          style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#C9A84C', textDecoration: 'none' }}
+        >
+          <Navigation className="w-3.5 h-3.5" /> Track Order
+        </Link>
+      </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8">
         <div>
@@ -66,7 +76,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
           </p>
         </div>
         {o.technologies && (
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(201,146,10,0.08)', border: '1px solid rgba(201,146,10,0.2)', color: '#C9920A' }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', color: '#C9A84C' }}>
             <Cpu className="w-3.5 h-3.5" /> {o.technologies.icon} {o.technologies.name}
           </div>
         )}
@@ -77,15 +87,41 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
         <OrderStatusStepper currentStatus={o.status} />
       </Card>
 
+      {/* Status Timeline */}
+      <div
+        className="rounded-xl p-5 mb-6"
+        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}
+      >
+        <p className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>
+          Status Timeline
+        </p>
+        <OrderStatusTimeline
+          currentStatus={o.status}
+          createdAt={o.created_at}
+          updatedAt={o.updated_at}
+        />
+      </div>
+
       {/* Tracking */}
       {o.tracking_number && (
-        <Card className="mb-6" style={{ backgroundColor: 'rgba(201,146,10,0.03)', border: '1px solid rgba(201,146,10,0.2)' }}>
-          <div className="flex items-center gap-3">
-            <Hash className="w-5 h-5" style={{ color: '#C9920A' }} />
-            <div>
-              <p className="text-sm font-medium text-text-primary">Tracking Number</p>
-              <p className="text-lg font-mono font-bold" style={{ color: '#C9920A' }}>{o.tracking_number}</p>
+        <Card className="mb-6" style={{ backgroundColor: 'rgba(201,168,76,0.03)', border: '1px solid rgba(201,168,76,0.2)' }}>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <Hash className="w-5 h-5" style={{ color: '#C9A84C' }} />
+              <div>
+                <p className="text-sm font-medium text-text-primary">Tracking Number</p>
+                <p className="text-lg font-mono font-bold" style={{ color: '#C9A84C' }}>{o.tracking_number}</p>
+              </div>
             </div>
+            <a 
+              href={`https://www.delhivery.com/tracking?id=${o.tracking_number}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
+            >
+              Track on Delhivery &rarr;
+            </a>
           </div>
         </Card>
       )}
@@ -139,7 +175,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
           {(o.material_cost != null || o.estimated_price != null) && (
             <Card>
               <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="w-4 h-4" style={{ color: '#C9920A' }} />
+                <TrendingUp className="w-4 h-4" style={{ color: '#C9A84C' }} />
                 <h2 className="text-base font-semibold text-text-primary">Pricing</h2>
               </div>
               <div className="space-y-2 text-sm">
@@ -167,9 +203,9 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   <PriceRow label="Platform (10%)" value={formatCurrency(o.platform_fee)} />
                 )}
               </div>
-              <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: '0.5px solid rgba(201,146,10,0.3)' }}>
+              <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: '0.5px solid rgba(201,168,76,0.3)' }}>
                 <span className="text-sm" style={{ color: '#9CA3AF' }}>Estimated Total</span>
-                <span className="text-lg font-bold" style={{ color: '#F5F4F0' }}>
+                <span className="text-lg font-bold" style={{ color: '#F5F0E8' }}>
                   {formatCurrency(o.estimated_price)}
                 </span>
               </div>
@@ -181,15 +217,15 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-text-muted">Status</p>
-                  <span className={`text-xs font-bold uppercase tracking-wider ${o.payment_status === 'paid' ? 'text-green-500' : 'text-[#C9920A]'}`}>
+                  <span className={`text-xs font-bold uppercase tracking-wider ${o.payment_status === 'paid' ? 'text-green-500' : 'text-[#C9A84C]'}`}>
                     {o.payment_status}
                   </span>
                 </div>
               </div>
               {o.final_price != null && (
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="text-sm font-medium" style={{ color: '#C9920A' }}>Final Price</span>
-                  <span className="text-lg font-bold" style={{ color: '#C9920A' }}>
+                  <span className="text-sm font-medium" style={{ color: '#C9A84C' }}>Final Price</span>
+                  <span className="text-lg font-bold" style={{ color: '#C9A84C' }}>
                     {formatCurrency(o.final_price)}
                   </span>
                 </div>
@@ -231,7 +267,7 @@ function PriceRow({ label, value, detail }: { label: string; value: string; deta
     <div className="flex items-center justify-between py-1.5 border-b border-border-primary/30 last:border-0">
       <span style={{ color: '#6B6B6B' }}>{label}</span>
       <div className="text-right">
-        <span className="font-medium" style={{ color: '#F5F4F0' }}>{value}</span>
+        <span className="font-medium" style={{ color: '#F5F0E8' }}>{value}</span>
         {detail && <span className="text-[10px] ml-1.5" style={{ color: '#6B6B6B' }}>· {detail}</span>}
       </div>
     </div>

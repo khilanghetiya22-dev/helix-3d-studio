@@ -7,8 +7,8 @@ type FormState = 'idle' | 'loading' | 'success' | 'error';
 
 const inputStyle = {
   backgroundColor: '#111111',
-  border: '1px solid rgba(201,146,10,0.2)',
-  color: '#F5F4F0',
+  border: '1px solid rgba(201,168,76,0.2)',
+  color: '#F5F0E8',
   borderRadius: '8px',
   padding: '12px 16px',
   width: '100%',
@@ -54,23 +54,23 @@ export default function ContactForm() {
     return (
       <div
         className="rounded-xl p-8 flex flex-col items-center justify-center py-16 text-center animate-fade-in"
-        style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.15)' }}
+        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}
       >
         <div
           className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-          style={{ backgroundColor: 'rgba(201,146,10,0.1)', border: '1px solid rgba(201,146,10,0.3)' }}
+          style={{ backgroundColor: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.3)' }}
         >
-          <CheckCircle className="w-8 h-8" style={{ color: '#C9920A' }} />
+          <CheckCircle className="w-8 h-8" style={{ color: '#C9A84C' }} />
         </div>
-        <h3 className="page-heading text-2xl mb-3" style={{ color: '#F5F4F0' }}>Message Sent!</h3>
+        <h3 className="page-heading text-2xl mb-3" style={{ color: '#F5F0E8' }}>Message Sent!</h3>
         <p className="text-sm mb-8 max-w-xs" style={{ color: '#9CA3AF' }}>
           Thanks for reaching out. We&apos;ll reply to{' '}
-          <strong style={{ color: '#C9920A' }}>{form.email}</strong> shortly.
+          <strong style={{ color: '#C9A84C' }}>{form.email}</strong> shortly.
         </p>
         <button
           onClick={() => { setForm({ name: '', email: '', subject: '', message: '' }); setState('idle'); }}
           className="text-sm px-6 py-3 rounded-lg transition-all"
-          style={{ border: '1px solid rgba(201,146,10,0.3)', color: '#9CA3AF' }}
+          style={{ border: '1px solid rgba(201,168,76,0.3)', color: '#9CA3AF' }}
         >
           Send Another Message
         </button>
@@ -81,9 +81,9 @@ export default function ContactForm() {
   return (
     <div
       className="rounded-xl p-8"
-      style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.15)' }}
+      style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}
     >
-      <h2 className="page-heading text-xl mb-2" style={{ color: '#F5F4F0' }}>Send a Message</h2>
+      <h2 className="page-heading text-xl mb-2" style={{ color: '#F5F0E8' }}>Send a Message</h2>
       <p className="text-sm mb-8" style={{ color: '#6B6B6B' }}>We&apos;ll get back to you as soon as possible.</p>
 
       <form onSubmit={handleSubmit} className="space-y-5" noValidate>
@@ -98,8 +98,8 @@ export default function ContactForm() {
               value={form.name}
               onChange={handleChange}
               style={inputStyle}
-              onFocus={(e) => { e.target.style.borderColor = '#C9920A'; }}
-              onBlur={(e) => { e.target.style.borderColor = 'rgba(201,146,10,0.2)'; }}
+              onFocus={(e) => { e.target.style.borderColor = '#C9A84C'; }}
+              onBlur={(e) => { e.target.style.borderColor = 'rgba(201,168,76,0.2)'; }}
             />
           </div>
           <div>
@@ -112,8 +112,8 @@ export default function ContactForm() {
               value={form.email}
               onChange={handleChange}
               style={inputStyle}
-              onFocus={(e) => { e.target.style.borderColor = '#C9920A'; }}
-              onBlur={(e) => { e.target.style.borderColor = 'rgba(201,146,10,0.2)'; }}
+              onFocus={(e) => { e.target.style.borderColor = '#C9A84C'; }}
+              onBlur={(e) => { e.target.style.borderColor = 'rgba(201,168,76,0.2)'; }}
             />
           </div>
         </div>
@@ -126,8 +126,8 @@ export default function ContactForm() {
             value={form.subject}
             onChange={handleChange}
             style={{ ...inputStyle, appearance: 'none' } as React.CSSProperties}
-            onFocus={(e) => { e.target.style.borderColor = '#C9920A'; }}
-            onBlur={(e) => { e.target.style.borderColor = 'rgba(201,146,10,0.2)'; }}
+            onFocus={(e) => { e.target.style.borderColor = '#C9A84C'; }}
+            onBlur={(e) => { e.target.style.borderColor = 'rgba(201,168,76,0.2)'; }}
           >
             <option value="">Select a topic…</option>
             <option value="order">Order Enquiry</option>
@@ -149,15 +149,15 @@ export default function ContactForm() {
             value={form.message}
             onChange={handleChange}
             style={{ ...inputStyle, resize: 'vertical', minHeight: '140px' } as React.CSSProperties}
-            onFocus={(e) => { e.target.style.borderColor = '#C9920A'; }}
-            onBlur={(e) => { e.target.style.borderColor = 'rgba(201,146,10,0.2)'; }}
+            onFocus={(e) => { e.target.style.borderColor = '#C9A84C'; }}
+            onBlur={(e) => { e.target.style.borderColor = 'rgba(201,168,76,0.2)'; }}
           />
         </div>
 
         {state === 'error' && (
           <div
             className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm"
-            style={{ backgroundColor: 'rgba(201,146,10,0.08)', border: '1px solid rgba(201,146,10,0.3)', color: '#C9920A' }}
+            style={{ backgroundColor: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.3)', color: '#C9A84C' }}
           >
             <AlertCircle className="w-4 h-4 flex-shrink-0" />
             {errorMsg}
@@ -169,15 +169,15 @@ export default function ContactForm() {
           disabled={state === 'loading'}
           className="w-full flex items-center justify-center gap-2 py-4 text-sm font-medium rounded-lg transition-all btn-glow"
           style={{
-            backgroundColor: state === 'loading' ? 'rgba(201,146,10,0.6)' : '#C9920A',
-            color: '#1A1A1A',
+            backgroundColor: state === 'loading' ? 'rgba(201,168,76,0.6)' : '#C9A84C',
+            color: '#0A0A0F',
             letterSpacing: '0.04em',
             cursor: state === 'loading' ? 'not-allowed' : 'pointer',
           }}
         >
           {state === 'loading' ? (
             <>
-              <span className="w-4 h-4 border-2 border-[#1A1A1A] border-t-transparent rounded-full animate-spin" />
+              <span className="w-4 h-4 border-2 border-[#0A0A0F] border-t-transparent rounded-full animate-spin" />
               Sending…
             </>
           ) : (

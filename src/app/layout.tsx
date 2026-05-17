@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'FORMIQ — 3D Print Studio',
-  description: 'Layer by layer. Smarter by design. Professional 3D printing services — FDM, SLA, SLS, DMLS and more.',
-  keywords: ['3D printing', 'FORMIQ', 'FDM', 'SLA', 'SLS', 'DMLS', 'CAD files', 'prototyping', '3D print studio'],
+  title: 'HELIX — 3D Print Studio',
+  description: 'Where ideas take shape. Professional 3D printing services — FDM, SLA, SLS, DMLS and more.',
+  keywords: ['3D printing', 'HELIX', 'FDM', 'SLA', 'SLS', 'DMLS', 'CAD files', 'prototyping', '3D print studio'],
   openGraph: {
-    title: 'FORMIQ 3D Print Studio',
-    description: 'Layer by layer. Smarter by design.',
-    siteName: 'FORMIQ',
+    title: 'HELIX 3D Studio',
+    description: 'Where ideas take shape.',
+    siteName: 'HELIX',
   },
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="min-h-screen" style={{ backgroundColor: '#1A1A1A', color: '#F5F4F0' }}>
+      <body className="min-h-screen" style={{ backgroundColor: '#0A0A0F', color: '#F5F0E8' }}>
         {children}
       </body>
     </html>

@@ -2,7 +2,7 @@ import { redirect, notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import AdminOrderDetailClient from './AdminOrderDetailClient';
 
-export const metadata = { title: 'Admin — Order Detail — FORMIQ 3D Print Studio' };
+export const metadata = { title: 'Admin — Order Detail — HELIX 3D Studio' };
 
 export default async function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

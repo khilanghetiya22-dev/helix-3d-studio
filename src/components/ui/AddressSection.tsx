@@ -93,8 +93,8 @@ export default function AddressSection({ initialAddress, name, phone, onConfirm 
   }
 
   return (
-    <div className="bg-[#111111] border border-[rgba(201,146,10,0.2)] rounded-xl p-5">
-      <h3 className="text-sm font-medium text-[#F5F4F0] mb-4 uppercase tracking-widest flex items-center gap-2">
+    <div className="bg-[#111111] border border-[rgba(201,168,76,0.2)] rounded-xl p-5">
+      <h3 className="text-sm font-medium text-[#F5F0E8] mb-4 uppercase tracking-widest flex items-center gap-2">
         Delivery Address
       </h3>
       <AddressForm

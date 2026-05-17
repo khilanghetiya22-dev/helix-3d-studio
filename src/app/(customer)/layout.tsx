@@ -2,6 +2,7 @@ import React from 'react';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import Navbar from '@/components/Navbar';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default async function CustomerLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
@@ -23,6 +24,7 @@ export default async function CustomerLayout({ children }: { children: React.Rea
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
+      <WhatsAppButton />
     </div>
   );
 }

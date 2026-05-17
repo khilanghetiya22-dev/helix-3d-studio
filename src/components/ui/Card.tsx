@@ -27,7 +27,7 @@ export default function Card({
   return (
     <div
       className={`
-        rounded-xl border bg-[#1B2A4A] border-[rgba(201,146,10,0.12)]
+        rounded-xl border bg-[#0D1B2A] border-[rgba(201,168,76,0.12)]
         ${hover ? 'card-hover' : ''}
         ${gradient ? 'gradient-border' : ''}
         ${paddings[padding]}

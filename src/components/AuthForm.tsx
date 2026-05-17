@@ -73,7 +73,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
         });
 
         if (signUpError) throw signUpError;
-        router.push('/dashboard');
+        router.push('/?welcome=true');
         router.refresh();
       } else {
         const { error: signInError } = await supabase.auth.signInWithPassword({
@@ -82,7 +82,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
         });
 
         if (signInError) throw signInError;
-        router.push('/dashboard');
+        router.push('/?welcome=true');
         router.refresh();
       }
     } catch (err: unknown) {
@@ -100,7 +100,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
       const { error: oauthError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/?welcome=true`,
         },
       });
       if (oauthError) throw oauthError;
@@ -113,27 +113,27 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left - FORMIQ Brand Panel */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center" style={{ backgroundColor: '#1B2A4A' }}>
+      {/* Left - HELIX Brand Panel */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center" style={{ backgroundColor: '#0D1B2A' }}>
         <div className="grid-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 max-w-md text-center px-8">
           {/* Established */}
-          <p className="text-xs tracking-widest uppercase mb-8" style={{ color: '#C9920A', letterSpacing: '0.2em' }}>
+          <p className="text-xs tracking-widest uppercase mb-8" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
             Established · MMXXV
           </p>
 
           {/* Brand name */}
-          <h1 className="brand-name text-5xl mb-2" style={{ color: '#F5F4F0' }}>FORMIQ</h1>
+          <h1 className="brand-name text-5xl mb-2" style={{ color: '#F5F0E8' }}>HELIX</h1>
           <p className="text-sm uppercase tracking-widest mb-6" style={{ color: 'rgba(245,244,240,0.55)', letterSpacing: '0.35em' }}>
             3D Print Studio
           </p>
 
           {/* Gold rule */}
-          <div className="w-24 mx-auto mb-6" style={{ height: '0.5px', backgroundColor: '#C9920A' }} />
+          <div className="w-24 mx-auto mb-6" style={{ height: '0.5px', backgroundColor: '#C9A84C' }} />
 
           {/* Tagline */}
-          <p className="tagline text-lg" style={{ color: '#C9920A' }}>
-            &ldquo;Layer by layer. Smarter by design.&rdquo;
+          <p className="tagline text-lg" style={{ color: '#C9A84C' }}>
+            &ldquo;Where ideas take shape.&rdquo;
           </p>
 
           {/* Stats */}
@@ -143,8 +143,8 @@ export default function AuthForm({ mode }: AuthFormProps) {
               { label: 'Materials', value: '19+' },
               { label: 'Quality', value: '100%' },
             ].map((stat) => (
-              <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: 'rgba(26,26,26,0.4)', border: '1px solid rgba(201,146,10,0.15)' }}>
-                <p className="text-2xl font-light" style={{ color: '#C9920A' }}>{stat.value}</p>
+              <div key={stat.label} className="rounded-lg p-4" style={{ backgroundColor: 'rgba(26,26,26,0.4)', border: '1px solid rgba(201,168,76,0.15)' }}>
+                <p className="text-2xl font-light" style={{ color: '#C9A84C' }}>{stat.value}</p>
                 <p className="text-xs mt-1" style={{ color: '#6B6B6B' }}>{stat.label}</p>
               </div>
             ))}
@@ -153,14 +153,14 @@ export default function AuthForm({ mode }: AuthFormProps) {
       </div>
 
       {/* Right - Form */}
-      <div className="flex-1 flex items-center justify-center p-6 sm:p-10" style={{ backgroundColor: '#1A1A1A' }}>
+      <div className="flex-1 flex items-center justify-center p-6 sm:p-10" style={{ backgroundColor: '#0A0A0F' }}>
         <div className="w-full max-w-md animate-fade-in">
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center gap-2.5 mb-8">
-            <span className="brand-name text-xl" style={{ color: '#F5F4F0' }}>FORMIQ</span>
+            <span className="brand-name text-xl" style={{ color: '#F5F0E8' }}>HELIX</span>
           </div>
 
-          <h2 className="page-heading text-2xl mb-1" style={{ color: '#F5F4F0' }}>
+          <h2 className="page-heading text-2xl mb-1" style={{ color: '#F5F0E8' }}>
             {mode === 'login' ? 'Welcome back' : 'Create your account'}
           </h2>
           <p className="text-sm mb-8" style={{ color: '#6B6B6B' }}>
@@ -170,7 +170,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
           </p>
 
           {error && (
-            <div className="mb-6 p-3 rounded-lg text-sm animate-scale-in" style={{ backgroundColor: 'rgba(201,146,10,0.1)', border: '1px solid rgba(201,146,10,0.3)', color: '#C9920A' }}>
+            <div className="mb-6 p-3 rounded-lg text-sm animate-scale-in" style={{ backgroundColor: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.3)', color: '#C9A84C' }}>
               {error}
             </div>
           )}
@@ -180,10 +180,10 @@ export default function AuthForm({ mode }: AuthFormProps) {
             onClick={handleGoogleSignIn}
             disabled={googleLoading}
             className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed mb-6"
-            style={{ backgroundColor: '#111', border: '1px solid rgba(201,146,10,0.2)', color: '#F5F4F0' }}
+            style={{ backgroundColor: '#111', border: '1px solid rgba(201,168,76,0.2)', color: '#F5F0E8' }}
           >
             {googleLoading ? (
-              <div className="w-5 h-5 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#C9920A', borderTopColor: 'transparent' }} />
+              <div className="w-5 h-5 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#C9A84C', borderTopColor: 'transparent' }} />
             ) : (
               <GoogleIcon className="w-5 h-5" />
             )}
@@ -192,9 +192,9 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
           {/* Divider */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="flex-1" style={{ height: '0.5px', backgroundColor: 'rgba(201,146,10,0.15)' }} />
+            <div className="flex-1" style={{ height: '0.5px', backgroundColor: 'rgba(201,168,76,0.15)' }} />
             <span className="text-xs uppercase tracking-wider" style={{ color: '#6B6B6B' }}>or</span>
-            <div className="flex-1" style={{ height: '0.5px', backgroundColor: 'rgba(201,146,10,0.15)' }} />
+            <div className="flex-1" style={{ height: '0.5px', backgroundColor: 'rgba(201,168,76,0.15)' }} />
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -271,13 +271,13 @@ export default function AuthForm({ mode }: AuthFormProps) {
           <p className="mt-6 text-center text-sm" style={{ color: '#6B6B6B' }}>
             {mode === 'login' ? (
               <>Don&apos;t have an account?{' '}
-                <Link href="/signup" className="font-medium transition-colors" style={{ color: '#C9920A' }}>
+                <Link href="/signup" className="font-medium transition-colors" style={{ color: '#C9A84C' }}>
                   Sign Up
                 </Link>
               </>
             ) : (
               <>Already have an account?{' '}
-                <Link href="/login" className="font-medium transition-colors" style={{ color: '#C9920A' }}>
+                <Link href="/login" className="font-medium transition-colors" style={{ color: '#C9A84C' }}>
                   Sign In
                 </Link>
               </>

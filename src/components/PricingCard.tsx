@@ -115,19 +115,19 @@ export default function PricingCard({
   const orderSubtotal = (pricing.materialCost ?? 0) + (pricing.printTimeCost ?? 0) + (pricing.handlingFee ?? 0) + (pricing.platformFee ?? 0);
 
   return (
-    <div className={`rounded-xl overflow-hidden ${className}`} style={{ backgroundColor: '#1B2A4A', border: '1px solid rgba(201,146,10,0.12)' }}>
+    <div className={`rounded-xl overflow-hidden ${className}`} style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.12)' }}>
       {/* Gold top stripe */}
-      <div style={{ height: '2px', backgroundColor: '#C9920A' }} />
+      <div style={{ height: '2px', backgroundColor: '#C9A84C' }} />
       <div className="p-5">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,146,10,0.1)' }}>
-              <Package className="w-4 h-4" style={{ color: '#C9920A' }} />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,168,76,0.1)' }}>
+              <Package className="w-4 h-4" style={{ color: '#C9A84C' }} />
             </div>
-            <h3 className="text-sm font-medium" style={{ color: '#F5F4F0', letterSpacing: '0.04em' }}>Estimated Print Cost</h3>
+            <h3 className="text-sm font-medium" style={{ color: '#F5F0E8', letterSpacing: '0.04em' }}>Estimated Print Cost</h3>
           </div>
-          <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider" style={{ backgroundColor: 'rgba(201,146,10,0.12)', color: '#C9920A', letterSpacing: '0.1em' }}>FORMIQ</span>
+          <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider" style={{ backgroundColor: 'rgba(201,168,76,0.12)', color: '#C9A84C', letterSpacing: '0.1em' }}>HELIX</span>
         </div>
 
         {/* Input details */}
@@ -146,7 +146,7 @@ export default function PricingCard({
                 onChange={(e) => setManualVolume(e.target.value)}
                 placeholder="e.g. 18.4"
                 className="w-full rounded-lg text-sm px-3 py-2 focus:outline-none transition-all"
-                style={{ backgroundColor: '#111', border: '1px solid rgba(201,146,10,0.2)', color: '#F5F4F0' }}
+                style={{ backgroundColor: '#111', border: '1px solid rgba(201,168,76,0.2)', color: '#F5F0E8' }}
               />
             </div>
           )}
@@ -171,7 +171,7 @@ export default function PricingCard({
         </div>
 
         {/* Cost breakdown divider */}
-        <div className="my-3" style={{ height: '0.5px', backgroundColor: 'rgba(201,146,10,0.2)' }} />
+        <div className="my-3" style={{ height: '0.5px', backgroundColor: 'rgba(201,168,76,0.2)' }} />
 
         {/* 4-component breakdown (shipping is now in widget below) */}
         <div className="space-y-2 text-sm">
@@ -184,7 +184,7 @@ export default function PricingCard({
               label="Print Time"
               value={formatCurrency(pricing.printTimeCost)}
               detail={`${pricing.printTime.billedHours} hr${pricing.printTime.billedHours > 1 ? 's' : ''} × ₹5`}
-              icon={<Clock className="w-3 h-3" style={{ color: '#C9920A' }} />}
+              icon={<Clock className="w-3 h-3" style={{ color: '#C9A84C' }} />}
             />
           )}
 
@@ -192,7 +192,7 @@ export default function PricingCard({
             <CostRow
               label="Handling (5%)"
               value={formatCurrency(pricing.handlingFee)}
-              icon={<Percent className="w-3 h-3" style={{ color: '#C9920A' }} />}
+              icon={<Percent className="w-3 h-3" style={{ color: '#C9A84C' }} />}
             />
           )}
 
@@ -200,13 +200,13 @@ export default function PricingCard({
             <CostRow
               label="Platform (10%)"
               value={formatCurrency(pricing.platformFee)}
-              icon={<Settings2 className="w-3 h-3" style={{ color: '#C9920A' }} />}
+              icon={<Settings2 className="w-3 h-3" style={{ color: '#C9A84C' }} />}
             />
           )}
         </div>
 
         {/* Shipping Widget Divider */}
-        <div className="my-3" style={{ height: '0.5px', backgroundColor: 'rgba(201,146,10,0.2)' }} />
+        <div className="my-3" style={{ height: '0.5px', backgroundColor: 'rgba(201,168,76,0.2)' }} />
 
         {/* Amazon-style Shipping Widget */}
         <ShippingWidget
@@ -219,24 +219,24 @@ export default function PricingCard({
         />
 
         {/* Grand Total divider */}
-        <div className="my-2" style={{ height: '0.5px', backgroundColor: '#C9920A', opacity: 0.4 }} />
+        <div className="my-2" style={{ height: '0.5px', backgroundColor: '#C9A84C', opacity: 0.4 }} />
 
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium flex items-center gap-1.5" style={{ color: '#C9920A' }}>
+          <span className="text-sm font-medium flex items-center gap-1.5" style={{ color: '#C9A84C' }}>
             <TrendingUp className="w-3.5 h-3.5" />
             Estimated Total
           </span>
           <span
             className={`text-xl font-bold transition-all duration-300`}
-            style={{ color: animatePrice ? '#C9920A' : '#F5F4F0', transform: animatePrice ? 'scale(1.1)' : 'scale(1)' }}
+            style={{ color: animatePrice ? '#C9A84C' : '#F5F0E8', transform: animatePrice ? 'scale(1.1)' : 'scale(1)' }}
           >
             {grandTotal !== null ? formatCurrency(grandTotal) : '—'}
           </span>
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-4 flex items-start gap-2 rounded-lg p-3" style={{ backgroundColor: 'rgba(26,26,26,0.4)', border: '1px solid rgba(201,146,10,0.1)' }}>
-          <AlertCircle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: '#C9920A' }} />
+        <div className="mt-4 flex items-start gap-2 rounded-lg p-3" style={{ backgroundColor: 'rgba(26,26,26,0.4)', border: '1px solid rgba(201,168,76,0.1)' }}>
+          <AlertCircle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: '#C9A84C' }} />
           <p className="text-[11px] leading-relaxed" style={{ color: '#6B6B6B' }}>
             This is an estimate. Final price will be confirmed after file review by our team.
           </p>
@@ -250,7 +250,7 @@ function Row({ label, value, icon }: { label: string; value: string; icon?: Reac
   return (
     <div className="flex items-center justify-between py-0.5">
       <span className="flex items-center gap-1" style={{ color: '#6B6B6B' }}>{icon}{label}</span>
-      <span className="font-medium" style={{ color: '#F5F4F0' }}>{value}</span>
+      <span className="font-medium" style={{ color: '#F5F0E8' }}>{value}</span>
     </div>
   );
 }
@@ -264,7 +264,7 @@ function CostRow({ label, value, detail, icon, highlight }: {
         {icon}{label}
       </span>
       <div className="text-right">
-        <span className="font-medium" style={{ color: highlight ? '#C9920A' : '#F5F4F0' }}>{value}</span>
+        <span className="font-medium" style={{ color: highlight ? '#C9A84C' : '#F5F0E8' }}>{value}</span>
         {detail && <span className="text-[10px] ml-1.5" style={{ color: '#6B6B6B' }}>· {detail}</span>}
       </div>
     </div>

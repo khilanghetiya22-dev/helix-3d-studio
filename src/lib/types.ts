@@ -1,4 +1,4 @@
-// Type definitions for FORMIQ 3D Print Studio
+// Type definitions for HELIX 3D Studio
 
 export type UserRole = 'admin' | 'customer';
 

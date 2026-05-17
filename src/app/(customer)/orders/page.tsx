@@ -14,10 +14,10 @@ export default async function OrdersPage() {
     redirect('/login');
   }
 
-  // Fetch all user orders
+  // Fetch all user orders with related technologies
   const { data: orders, error } = await supabase
     .from('orders')
-    .select('*, order_files(file_name, file_url)')
+    .select('*, order_files(file_name, file_url), technologies(name, slug)')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
 
@@ -31,14 +31,14 @@ export default async function OrdersPage() {
     <div className="max-w-6xl mx-auto animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold mb-1" style={{ color: '#F5F4F0' }}>Order History</h1>
+          <h1 className="text-2xl font-bold mb-1" style={{ color: '#F5F0E8' }}>Order History</h1>
           <p className="text-sm" style={{ color: '#6B6B6B' }}>View and track your 3D printing orders</p>
         </div>
         
         <Link 
           href="/orders/new" 
           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
-          style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+          style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
         >
           <Plus className="w-4 h-4" />
           New Order

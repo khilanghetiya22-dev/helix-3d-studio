@@ -145,8 +145,8 @@ export default function FileUploadZone({
         onClick={handleClick}
         className="relative rounded-xl border-2 border-dashed p-8 text-center cursor-pointer transition-all duration-300 group"
         style={{
-          backgroundColor: isDragging ? 'rgba(201,146,10,0.05)' : '#1B2A4A',
-          borderColor: isDragging ? '#C9920A' : 'rgba(201,146,10,0.25)',
+          backgroundColor: isDragging ? 'rgba(201,168,76,0.05)' : '#0D1B2A',
+          borderColor: isDragging ? '#C9A84C' : 'rgba(201,168,76,0.25)',
           transform: isDragging ? 'scale(1.01)' : 'scale(1)',
           opacity: disabled ? 0.5 : 1,
           cursor: disabled ? 'not-allowed' : 'pointer',
@@ -166,18 +166,18 @@ export default function FileUploadZone({
           <div
             className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all duration-300"
             style={{
-              backgroundColor: isDragging ? 'rgba(201,146,10,0.15)' : 'rgba(201,146,10,0.08)',
-              color: '#C9920A',
+              backgroundColor: isDragging ? 'rgba(201,168,76,0.15)' : 'rgba(201,168,76,0.08)',
+              color: '#C9A84C',
             }}
           >
             <Upload className="w-7 h-7" />
           </div>
 
-          <h3 className="text-base font-medium mb-1" style={{ color: '#F5F4F0' }}>
+          <h3 className="text-base font-medium mb-1" style={{ color: '#F5F0E8' }}>
             {isDragging ? 'Drop files here' : 'Drag & drop your 3D files'}
           </h3>
           <p className="text-sm mb-3" style={{ color: '#9CA3AF' }}>
-            or <span className="font-medium" style={{ color: '#C9920A' }}>browse from your computer</span>
+            or <span className="font-medium" style={{ color: '#C9A84C' }}>browse from your computer</span>
           </p>
           <p className="text-xs" style={{ color: '#6B6B6B' }}>
             STL, OBJ, STEP, F3D, SolidWorks, CATIA & more • Max {formatFileSize(MAX_FILE_SIZE)} per file
@@ -194,7 +194,7 @@ export default function FileUploadZone({
             </p>
             <button
               onClick={(e) => { e.stopPropagation(); onFilesChange([]); }}
-              className="text-xs transition-colors" style={{ color: '#C9920A' }}
+              className="text-xs transition-colors" style={{ color: '#C9A84C' }}
             >
               Remove all
             </button>
@@ -206,22 +206,22 @@ export default function FileUploadZone({
                 key={f.id}
                 className="flex items-center gap-3 rounded-lg p-3 animate-scale-in"
                 style={{
-                  backgroundColor: f.error ? 'rgba(201,146,10,0.05)' : 'rgba(26,26,26,0.5)',
-                  border: f.error ? '1px solid rgba(201,146,10,0.3)' : '1px solid rgba(201,146,10,0.1)',
+                  backgroundColor: f.error ? 'rgba(201,168,76,0.05)' : 'rgba(26,26,26,0.5)',
+                  border: f.error ? '1px solid rgba(201,168,76,0.3)' : '1px solid rgba(201,168,76,0.1)',
                 }}
               >
                 <div
                   className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
                   style={{
-                    backgroundColor: f.error ? 'rgba(201,146,10,0.1)' : 'rgba(201,146,10,0.08)',
-                    color: '#C9920A',
+                    backgroundColor: f.error ? 'rgba(201,168,76,0.1)' : 'rgba(201,168,76,0.08)',
+                    color: '#C9A84C',
                   }}
                 >
                   {f.error ? <AlertCircle className="w-5 h-5" /> : getFileIcon(f.file.name)}
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate" style={{ color: '#F5F4F0' }}>
+                  <p className="text-sm font-medium truncate" style={{ color: '#F5F0E8' }}>
                     {f.file.name}
                   </p>
                   <div className="flex items-center gap-2 mt-0.5">
@@ -230,7 +230,7 @@ export default function FileUploadZone({
                     <span className="text-xs" style={{ color: '#6B6B6B' }}>{getFileCategory(f.file.name)}</span>
                   </div>
                   {f.error && (
-                    <p className="text-xs mt-1" style={{ color: '#C9920A' }}>{f.error}</p>
+                    <p className="text-xs mt-1" style={{ color: '#C9A84C' }}>{f.error}</p>
                   )}
                 </div>
 

@@ -69,99 +69,99 @@ export default function AddressForm({ defaultValues = {}, onSave, onChange, hide
     <div className="space-y-4">
       {/* Street */}
       <div>
-        <label className="block text-sm mb-1" style={{ color: '#F5F4F0' }}>Street Address</label>
+        <label className="block text-sm mb-1" style={{ color: '#F5F0E8' }}>Street Address</label>
         <input
           type="text"
           value={address.street}
           onChange={(e) => handleChange('street', e.target.value)}
           className={`w-full px-4 py-2 rounded-md transition-colors outline-none ${
-            errors.street ? 'border-[#C9920A] bg-[#111111]' : 'border border-[rgba(201,146,10,0.2)] bg-[#111111] focus:border-[#C9920A]'
+            errors.street ? 'border-[#C9A84C] bg-[#111111]' : 'border border-[rgba(201,168,76,0.2)] bg-[#111111] focus:border-[#C9A84C]'
           }`}
-          style={{ color: '#F5F4F0' }}
+          style={{ color: '#F5F0E8' }}
           placeholder="House/Flat number, Building, Street"
         />
-        {errors.street && <p className="text-xs mt-1" style={{ color: '#C9920A' }}>{errors.street}</p>}
+        {errors.street && <p className="text-xs mt-1" style={{ color: '#C9A84C' }}>{errors.street}</p>}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* State */}
         <div>
-          <label className="block text-sm mb-1" style={{ color: '#F5F4F0' }}>State / Union Territory</label>
+          <label className="block text-sm mb-1" style={{ color: '#F5F0E8' }}>State / Union Territory</label>
           <select
             value={address.state}
             onChange={(e) => handleChange('state', e.target.value)}
             className={`w-full px-4 py-2 rounded-md transition-colors outline-none appearance-none ${
-              errors.state ? 'border-[#C9920A] bg-[#111111]' : 'border border-[rgba(201,146,10,0.2)] bg-[#111111] focus:border-[#C9920A]'
+              errors.state ? 'border-[#C9A84C] bg-[#111111]' : 'border border-[rgba(201,168,76,0.2)] bg-[#111111] focus:border-[#C9A84C]'
             }`}
-            style={{ color: address.state ? '#F5F4F0' : '#6B6B6B' }}
+            style={{ color: address.state ? '#F5F0E8' : '#6B6B6B' }}
           >
             <option value="" disabled>Select State / UT</option>
             {STATES_AND_UTS.map(state => (
-              <option key={state} value={state} style={{ color: '#F5F4F0', backgroundColor: '#1A1A1A' }}>{state}</option>
+              <option key={state} value={state} style={{ color: '#F5F0E8', backgroundColor: '#0A0A0F' }}>{state}</option>
             ))}
           </select>
-          {errors.state && <p className="text-xs mt-1" style={{ color: '#C9920A' }}>{errors.state}</p>}
+          {errors.state && <p className="text-xs mt-1" style={{ color: '#C9A84C' }}>{errors.state}</p>}
         </div>
 
         {/* City */}
         <div>
-          <label className="block text-sm mb-1" style={{ color: '#F5F4F0' }}>City</label>
+          <label className="block text-sm mb-1" style={{ color: '#F5F0E8' }}>City</label>
           <select
             value={address.city}
             onChange={(e) => handleChange('city', e.target.value)}
             disabled={!address.state}
             className={`w-full px-4 py-2 rounded-md transition-colors outline-none appearance-none disabled:opacity-50 ${
-              errors.city ? 'border-[#C9920A] bg-[#111111]' : 'border border-[rgba(201,146,10,0.2)] bg-[#111111] focus:border-[#C9920A]'
+              errors.city ? 'border-[#C9A84C] bg-[#111111]' : 'border border-[rgba(201,168,76,0.2)] bg-[#111111] focus:border-[#C9A84C]'
             }`}
-            style={{ color: address.city ? '#F5F4F0' : '#6B6B6B' }}
+            style={{ color: address.city ? '#F5F0E8' : '#6B6B6B' }}
           >
             <option value="" disabled>Select City</option>
             {availableCities.map(city => (
-              <option key={city} value={city} style={{ color: '#F5F4F0', backgroundColor: '#1A1A1A' }}>{city}</option>
+              <option key={city} value={city} style={{ color: '#F5F0E8', backgroundColor: '#0A0A0F' }}>{city}</option>
             ))}
           </select>
-          {errors.city && <p className="text-xs mt-1" style={{ color: '#C9920A' }}>{errors.city}</p>}
+          {errors.city && <p className="text-xs mt-1" style={{ color: '#C9A84C' }}>{errors.city}</p>}
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Pincode */}
         <div>
-          <label className="block text-sm mb-1" style={{ color: '#F5F4F0' }}>Pincode</label>
+          <label className="block text-sm mb-1" style={{ color: '#F5F0E8' }}>Pincode</label>
           <input
             type="text"
             value={address.pincode}
             onChange={handlePincodeChange}
             className={`w-full px-4 py-2 rounded-md transition-colors outline-none ${
-              errors.pincode ? 'border-[#C9920A] bg-[#111111]' : 'border border-[rgba(201,146,10,0.2)] bg-[#111111] focus:border-[#C9920A]'
+              errors.pincode ? 'border-[#C9A84C] bg-[#111111]' : 'border border-[rgba(201,168,76,0.2)] bg-[#111111] focus:border-[#C9A84C]'
             }`}
-            style={{ color: '#F5F4F0' }}
+            style={{ color: '#F5F0E8' }}
             placeholder="6-digit PIN"
             maxLength={6}
           />
-          {errors.pincode && <p className="text-xs mt-1" style={{ color: '#C9920A' }}>{errors.pincode}</p>}
+          {errors.pincode && <p className="text-xs mt-1" style={{ color: '#C9A84C' }}>{errors.pincode}</p>}
         </div>
 
         {/* Country */}
         <div>
-          <label className="block text-sm mb-1" style={{ color: '#F5F4F0' }}>Country</label>
+          <label className="block text-sm mb-1" style={{ color: '#F5F0E8' }}>Country</label>
           <input
             type="text"
             value="India"
             readOnly
-            className="w-full px-4 py-2 rounded-md bg-[#111111] border border-[rgba(201,146,10,0.2)] cursor-not-allowed opacity-70"
-            style={{ color: '#F5F4F0' }}
+            className="w-full px-4 py-2 rounded-md bg-[#111111] border border-[rgba(201,168,76,0.2)] cursor-not-allowed opacity-70"
+            style={{ color: '#F5F0E8' }}
           />
         </div>
       </div>
 
       {!hideSaveButton && (
-        <div className="flex justify-end pt-4 border-t" style={{ borderColor: 'rgba(201,146,10,0.2)' }}>
+        <div className="flex justify-end pt-4 border-t" style={{ borderColor: 'rgba(201,168,76,0.2)' }}>
           <button
             type="button"
             onClick={handleSubmit}
             className="px-6 py-2 rounded-md font-medium text-sm transition-colors"
-            style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+            style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
           >
             Save Address
           </button>

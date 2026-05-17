@@ -1,4 +1,4 @@
-// HTML Email Templates for FORMIQ 3D Print Studio
+// HTML Email Templates for HELIX 3D Studio
 // These use inline styles for maximum email client compatibility
 
 import type { Address, OrderStatus } from './types';
@@ -71,10 +71,10 @@ function baseLayout(title: string, content: string): string {
           <tr>
             <td style="text-align:center;padding-top:24px;">
               <p style="margin:0;font-size:12px;color:${textSecondary};">
-                © ${new Date().getFullYear()} FORMIQ 3D Print Studio. All rights reserved.
+                © ${new Date().getFullYear()} HELIX 3D Studio. All rights reserved.
               </p>
               <p style="margin:6px 0 0;font-size:11px;color:${textSecondary};">
-                You received this email because you have an account with FORMIQ 3D Print Studio.
+                You received this email because you have an account with HELIX 3D Studio.
               </p>
             </td>
           </tr>
@@ -154,7 +154,7 @@ export function orderConfirmationTemplate(data: {
     </p>`;
 
   return {
-    subject: `Order Confirmed — #${data.orderId.slice(0, 8)} | FORMIQ 3D Print Studio`,
+    subject: `Order Confirmed — #${data.orderId.slice(0, 8)} | HELIX 3D Studio`,
     html: baseLayout('Order Confirmed', content),
   };
 }
@@ -266,7 +266,7 @@ export function statusUpdateTemplate(data: {
 
     ${isDelivered ? `
     <p style="margin:0 0 20px;font-size:13px;color:${textSecondary};">
-      If you have any questions or concerns about your print, please don't hesitate to reach out. Thank you for choosing FORMIQ 3D Print Studio!
+      If you have any questions or concerns about your print, please don't hesitate to reach out. Thank you for choosing HELIX 3D Studio!
     </p>` : ''}
 
     <!-- CTA -->
@@ -284,7 +284,7 @@ export function statusUpdateTemplate(data: {
   };
 
   return {
-    subject: subjectMap[data.newStatus] || `Order Update — #${data.orderId.slice(0, 8)} | FORMIQ 3D Print Studio`,
+    subject: subjectMap[data.newStatus] || `Order Update — #${data.orderId.slice(0, 8)} | HELIX 3D Studio`,
     html: baseLayout('Order Status Update', content),
   };
 }

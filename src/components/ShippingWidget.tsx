@@ -71,8 +71,8 @@ export default function ShippingWidget({
     return (
       <div className="py-3">
         <div className="flex items-center gap-2 mb-2">
-          <Truck className="w-4 h-4" style={{ color: '#C9920A' }} />
-          <span className="text-sm font-medium" style={{ color: '#F5F4F0' }}>Delivery Options</span>
+          <Truck className="w-4 h-4" style={{ color: '#C9A84C' }} />
+          <span className="text-sm font-medium" style={{ color: '#F5F0E8' }}>Delivery Options</span>
         </div>
         <p className="text-xs" style={{ color: '#6B6B6B' }}>
           Enter your 6-digit pincode to see delivery options
@@ -86,8 +86,8 @@ export default function ShippingWidget({
     return (
       <div className="py-3 space-y-3 animate-pulse">
         <div className="flex items-center gap-2">
-          <Truck className="w-4 h-4" style={{ color: '#C9920A' }} />
-          <span className="text-sm font-medium" style={{ color: '#F5F4F0' }}>Calculating delivery...</span>
+          <Truck className="w-4 h-4" style={{ color: '#C9A84C' }} />
+          <span className="text-sm font-medium" style={{ color: '#F5F0E8' }}>Calculating delivery...</span>
         </div>
         {[1, 2, 3].map(i => (
           <div key={i} className="h-12 rounded-lg" style={{ backgroundColor: 'rgba(26,26,26,0.4)' }} />
@@ -101,11 +101,11 @@ export default function ShippingWidget({
     return (
       <div className="py-3">
         <div className="flex items-center gap-2 mb-2">
-          <Truck className="w-4 h-4" style={{ color: '#C9920A' }} />
-          <span className="text-sm font-medium" style={{ color: '#F5F4F0' }}>Delivery Options</span>
+          <Truck className="w-4 h-4" style={{ color: '#C9A84C' }} />
+          <span className="text-sm font-medium" style={{ color: '#F5F0E8' }}>Delivery Options</span>
         </div>
-        <div className="rounded-lg p-3" style={{ backgroundColor: 'rgba(201,146,10,0.08)', border: '1px solid rgba(201,146,10,0.2)' }}>
-          <p className="text-xs" style={{ color: '#C9920A' }}>
+        <div className="rounded-lg p-3" style={{ backgroundColor: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)' }}>
+          <p className="text-xs" style={{ color: '#C9A84C' }}>
             Sorry, we don&apos;t deliver to this pincode yet. Try a nearby pincode.
           </p>
         </div>
@@ -122,8 +122,8 @@ export default function ShippingWidget({
     <div className="py-3">
       {/* Header — "Shipping to Pune, Maharashtra · 411001" */}
       <div className="flex items-center gap-2 mb-3">
-        <Truck className="w-4 h-4" style={{ color: '#C9920A' }} />
-        <span className="text-sm font-medium" style={{ color: '#F5F4F0' }}>
+        <Truck className="w-4 h-4" style={{ color: '#C9A84C' }} />
+        <span className="text-sm font-medium" style={{ color: '#F5F0E8' }}>
           {result.cityName
             ? `Delivery to ${result.cityName}, ${result.stateName}`
             : 'Delivery Options'}
@@ -144,9 +144,9 @@ export default function ShippingWidget({
               onClick={() => handleTierSelect(tier)}
               className="w-full text-left rounded-lg p-3 transition-all duration-200"
               style={{
-                backgroundColor: isSelected ? 'rgba(201,146,10,0.06)' : 'rgba(26,26,26,0.3)',
-                border: isSelected ? '1px solid rgba(201,146,10,0.4)' : '1px solid rgba(201,146,10,0.08)',
-                borderLeft: isSelected ? '3px solid #C9920A' : '3px solid transparent',
+                backgroundColor: isSelected ? 'rgba(201,168,76,0.06)' : 'rgba(26,26,26,0.3)',
+                border: isSelected ? '1px solid rgba(201,168,76,0.4)' : '1px solid rgba(201,168,76,0.08)',
+                borderLeft: isSelected ? '3px solid #C9A84C' : '3px solid transparent',
               }}
             >
               <div className="flex items-center justify-between">
@@ -155,25 +155,25 @@ export default function ShippingWidget({
                   <div
                     className="w-3.5 h-3.5 rounded-full border flex items-center justify-center flex-shrink-0"
                     style={{
-                      borderColor: isSelected ? '#C9920A' : '#6B6B6B',
+                      borderColor: isSelected ? '#C9A84C' : '#6B6B6B',
                     }}
                   >
                     {isSelected && (
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#C9920A' }} />
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#C9A84C' }} />
                     )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium" style={{ color: '#F5F4F0' }}>
+                      <span className="text-xs font-medium" style={{ color: '#F5F0E8' }}>
                         {tier.label}
                       </span>
                       {tier.tier === 'overnight' && (
-                        <Zap className="w-3 h-3" style={{ color: '#C9920A' }} />
+                        <Zap className="w-3 h-3" style={{ color: '#C9A84C' }} />
                       )}
                       {tier.isFree && (
                         <span
                           className="px-1.5 py-0.5 rounded text-[9px] font-medium"
-                          style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+                          style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
                         >
                           FREE
                         </span>
@@ -186,14 +186,14 @@ export default function ShippingWidget({
                 </div>
 
                 {/* Price */}
-                <span className="text-sm font-medium" style={{ color: tier.isFree ? '#C9920A' : '#F5F4F0' }}>
+                <span className="text-sm font-medium" style={{ color: tier.isFree ? '#C9A84C' : '#F5F0E8' }}>
                   {tier.isFree ? 'FREE' : tier.price === 0 ? 'FREE' : formatPrice(tier.price)}
                 </span>
               </div>
 
               {/* Urgency note */}
               {tier.urgencyNote && isSelected && (
-                <p className="text-[10px] mt-1.5 ml-5.5 flex items-center gap-1" style={{ color: '#C9920A' }}>
+                <p className="text-[10px] mt-1.5 ml-5.5 flex items-center gap-1" style={{ color: '#C9A84C' }}>
                   <Zap className="w-2.5 h-2.5" />
                   {tier.urgencyNote}
                 </p>
@@ -220,7 +220,7 @@ export default function ShippingWidget({
             {result.note && <p>{result.note}</p>}
             <p>Fuel surcharge (12%) + GST (18%) included in all prices</p>
             {orderTotal < 999 && (
-              <p style={{ color: '#C9920A' }}>
+              <p style={{ color: '#C9A84C' }}>
                 <MapPin className="w-2.5 h-2.5 inline" /> Add {formatPrice(999 - orderTotal)} more for free standard delivery
               </p>
             )}

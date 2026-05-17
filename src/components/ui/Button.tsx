@@ -23,11 +23,11 @@ export default function Button({
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus-ring cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
-    primary: 'text-[#1A1A1A] shadow-lg' + ' bg-[#C9920A] hover:bg-[#B5830A]',
-    secondary: 'text-[#F5F4F0] border' + ' bg-[#1B2A4A] border-[rgba(201,146,10,0.2)] hover:border-[#C9920A]',
-    danger: 'text-[#C9920A] border' + ' bg-transparent border-[#C9920A] hover:bg-[rgba(201,146,10,0.1)]',
-    ghost: 'text-[#9CA3AF] hover:text-[#F5F4F0] bg-transparent hover:bg-[#1B2A4A]',
-    outline: 'text-[#C9920A] border bg-transparent border-[#C9920A] hover:bg-[#C9920A] hover:text-[#1A1A1A]',
+    primary: 'text-[#0A0A0F] shadow-lg' + ' bg-[#C9A84C] hover:bg-[#B5830A]',
+    secondary: 'text-[#F5F0E8] border' + ' bg-[#0D1B2A] border-[rgba(201,168,76,0.2)] hover:border-[#C9A84C]',
+    danger: 'text-[#C9A84C] border' + ' bg-transparent border-[#C9A84C] hover:bg-[rgba(201,168,76,0.1)]',
+    ghost: 'text-[#9CA3AF] hover:text-[#F5F0E8] bg-transparent hover:bg-[#0D1B2A]',
+    outline: 'text-[#C9A84C] border bg-transparent border-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0F]',
   };
 
   const sizes = {

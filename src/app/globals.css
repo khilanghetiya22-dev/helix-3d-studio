@@ -1,39 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* FORMIQ Brand Palette */
-  --color-primary: #C9920A;
-  --color-primary-hover: #B5830A;
-  --color-primary-light: #D4A632;
-  --color-accent: #C9920A;
-  --color-accent-hover: #B5830A;
-  --color-accent-light: #D4A632;
-  --color-danger: #C9920A;
-  --color-danger-hover: #B5830A;
-  --color-warning: #C9920A;
-  --color-warning-hover: #B5830A;
+  /* HELIX Brand Palette */
+  --color-primary: #C9A84C;
+  --color-primary-hover: #B5933C;
+  --color-primary-light: #D4B663;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #B5933C;
+  --color-accent-light: #D4B663;
+  --color-danger: #C9A84C;
+  --color-danger-hover: #B5933C;
+  --color-warning: #C9A84C;
+  --color-warning-hover: #B5933C;
 
-  --color-bg-deep: #1A1A1A;
-  --color-bg-primary: #1A1A1A;
-  --color-bg-secondary: #1B2A4A;
-  --color-bg-surface: #1B2A4A;
-  --color-bg-elevated: #243553;
+  --color-bg-deep: #0A0A0F;
+  --color-bg-primary: #0A0A0F;
+  --color-bg-secondary: #0D1B2A;
+  --color-bg-surface: #0D1B2A;
+  --color-bg-elevated: #162842;
 
-  --color-border-primary: rgba(201, 146, 10, 0.2);
-  --color-border-secondary: rgba(201, 146, 10, 0.35);
-  --color-border-accent: #C9920A;
+  --color-border-primary: rgba(201, 168, 76, 0.2);
+  --color-border-secondary: rgba(201, 168, 76, 0.35);
+  --color-border-accent: #C9A84C;
 
-  --color-text-primary: #F5F4F0;
+  --color-text-primary: #F5F0E8;
   --color-text-secondary: #9CA3AF;
   --color-text-muted: #6B6B6B;
-  --color-text-inverse: #1A1A1A;
+  --color-text-inverse: #0A0A0F;
 
-  /* FORMIQ specific */
-  --color-formiq-black: #1A1A1A;
-  --color-formiq-navy: #1B2A4A;
-  --color-formiq-gold: #C9920A;
-  --color-formiq-white: #F5F4F0;
-  --color-formiq-grey: #6B6B6B;
+  /* HELIX specific */
+  --color-helix-black: #0A0A0F;
+  --color-helix-navy: #0D1B2A;
+  --color-helix-gold: #C9A84C;
+  --color-helix-gold-light: #E8C96A;
+  --color-helix-cream: #F5F0E8;
+  --color-helix-grey: #6B6B6B;
+  --color-helix-white-spoke: #FFFFFF;
 
   --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
@@ -50,14 +52,16 @@
   --animate-spin-slow: spin 3s linear infinite;
 }
 
-/* FORMIQ CSS Variables */
+/* HELIX CSS Variables */
 :root {
-  --formiq-black: #1A1A1A;
-  --formiq-navy: #1B2A4A;
-  --formiq-gold: #C9920A;
-  --formiq-gold-dim: rgba(201, 146, 10, 0.25);
-  --formiq-white: #F5F4F0;
-  --formiq-grey: #6B6B6B;
+  --helix-black: #0A0A0F;
+  --helix-navy: #0D1B2A;
+  --helix-gold: #C9A84C;
+  --helix-gold-light: #E8C96A;
+  --helix-gold-dim: rgba(201, 168, 76, 0.25);
+  --helix-white-spoke: #FFFFFF;
+  --helix-cream: #F5F0E8;
+  --helix-grey: #6B6B6B;
 }
 
 @layer base {
@@ -76,15 +80,15 @@
   body {
     font-family: var(--font-sans);
     font-weight: 400;
-    background-color: var(--formiq-black);
-    color: var(--formiq-white);
+    background-color: var(--helix-black);
+    color: var(--helix-cream);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: rgba(201, 146, 10, 0.3);
-    color: var(--formiq-white);
+    background-color: rgba(201, 168, 76, 0.3);
+    color: var(--helix-cream);
   }
 
   /* Scrollbar */
@@ -94,16 +98,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--formiq-black);
+    background: var(--helix-black);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--formiq-navy);
+    background: var(--helix-navy);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--formiq-gold);
+    background: var(--helix-gold);
   }
 }
 
@@ -134,8 +138,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(201, 146, 10, 0.15); }
-  50% { box-shadow: 0 0 20px rgba(201, 146, 10, 0.3); }
+  0%, 100% { box-shadow: 0 0 5px rgba(201, 168, 76, 0.15); }
+  50% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.3); }
 }
 
 @keyframes shimmer {
@@ -148,11 +152,11 @@
   50% { transform: translateY(-8px); }
 }
 
-/* === FORMIQ BRAND UTILITIES === */
+/* === HELIX BRAND UTILITIES === */
 
 .brand-name {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 200;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -173,30 +177,30 @@
   font-style: italic;
 }
 
-/* Glass morphism — FORMIQ Navy */
+/* Glass morphism — HELIX Navy */
 .glass {
-  background: rgba(27, 42, 74, 0.6);
+  background: rgba(13, 27, 42, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--formiq-gold-dim);
+  border: 1px solid var(--helix-gold-dim);
 }
 
 .glass-strong {
-  background: rgba(27, 42, 74, 0.85);
+  background: rgba(13, 27, 42, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--formiq-gold-dim);
+  border: 1px solid var(--helix-gold-dim);
 }
 
 /* Gold gradient text */
 .gradient-text {
-  color: var(--formiq-gold);
+  color: var(--helix-gold);
 }
 
 /* Gold rule — horizontal separator */
 .gold-rule {
   height: 0.5px;
-  background: var(--formiq-gold);
+  background: var(--helix-gold);
   opacity: 0.3;
   border: none;
 }
@@ -209,22 +213,31 @@
 .card-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  border-color: var(--formiq-gold) !important;
+  border-color: var(--helix-gold) !important;
 }
 
-/* Hero gradient — FORMIQ */
+/* Row hover — gold border, no lift */
+.row-hover {
+  transition: border-color 0.2s ease;
+}
+
+.row-hover:hover {
+  border-color: rgba(201, 168, 76, 0.4) !important;
+}
+
+/* Hero gradient — HELIX */
 .hero-gradient {
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(27, 42, 74, 0.6) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(201, 146, 10, 0.08) 0%, transparent 50%),
-    var(--formiq-black);
+    radial-gradient(ellipse at 20% 50%, rgba(13, 27, 42, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+    var(--helix-black);
 }
 
 /* Grid pattern — gold-tinted */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(201, 146, 10, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 146, 10, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(201, 168, 76, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -250,17 +263,17 @@
 /* Gradient border — gold */
 .gradient-border {
   position: relative;
-  background: var(--formiq-navy);
+  background: var(--helix-navy);
   border-radius: 12px;
-  border: 1px solid var(--formiq-gold-dim);
+  border: 1px solid var(--helix-gold-dim);
 }
 
-/* Status colors — FORMIQ branded */
-.status-received { color: var(--formiq-grey); border: 1px solid var(--formiq-grey); background: transparent; }
-.status-printing { color: var(--formiq-white); background-color: var(--formiq-navy); border-color: var(--formiq-navy); }
-.status-quality_check { color: var(--formiq-gold); border: 1px solid var(--formiq-gold); background: transparent; }
-.status-shipped { color: var(--formiq-black); background-color: var(--formiq-gold); border-color: var(--formiq-gold); }
-.status-delivered { color: var(--formiq-white); border: 1px solid var(--formiq-white); background: transparent; }
+/* Status colors — HELIX branded */
+.status-received { color: var(--helix-grey); border: 1px solid var(--helix-grey); background: transparent; }
+.status-printing { color: var(--helix-cream); background-color: var(--helix-navy); border-color: var(--helix-navy); }
+.status-quality_check { color: var(--helix-gold); border: 1px solid var(--helix-gold); background: transparent; }
+.status-shipped { color: var(--helix-black); background-color: var(--helix-gold); border-color: var(--helix-gold); }
+.status-delivered { color: var(--helix-cream); border: 1px solid var(--helix-cream); background: transparent; }
 
 /* Noise texture overlay */
 .noise-overlay::after {
@@ -279,5 +292,5 @@
 }
 
 .focus-ring:focus-visible {
-  box-shadow: 0 0 0 2px var(--formiq-black), 0 0 0 4px var(--formiq-gold);
+  box-shadow: 0 0 0 2px var(--helix-black), 0 0 0 4px var(--helix-gold);
 }

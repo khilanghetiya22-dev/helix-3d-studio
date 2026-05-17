@@ -9,7 +9,7 @@ import { STATUS_LABELS } from '@/lib/constants';
 import { formatDistanceToNow } from 'date-fns';
 import type { Order, OrderStatus } from '@/lib/types';
 
-export const metadata = { title: 'Admin — All Orders — FORMIQ 3D Print Studio' };
+export const metadata = { title: 'Admin — All Orders — HELIX 3D Studio' };
 
 const statusIcons: Record<string, React.ReactNode> = {
   received: <Clock className="w-4 h-4" />,

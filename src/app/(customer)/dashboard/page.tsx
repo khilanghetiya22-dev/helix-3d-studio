@@ -10,7 +10,7 @@ import { formatDistanceToNow } from 'date-fns';
 import type { Order, OrderStatus } from '@/lib/types';
 
 export const metadata = {
-  title: 'My Orders — FORMIQ 3D Print Studio',
+  title: 'My Orders — HELIX 3D Studio',
   description: 'Manage your 3D printing orders.',
 };
 
@@ -39,15 +39,15 @@ export default async function DashboardPage() {
       {/* Welcome */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="page-heading text-2xl sm:text-3xl" style={{ color: '#F5F4F0' }}>
-            Welcome back, <span style={{ color: '#C9920A' }}>{profile?.full_name || 'User'}</span>
+          <h1 className="page-heading text-2xl sm:text-3xl" style={{ color: '#F5F0E8' }}>
+            Welcome back, <span style={{ color: '#C9A84C' }}>{profile?.full_name || 'User'}</span>
           </h1>
           <p className="mt-1" style={{ color: '#6B6B6B' }}>Here&apos;s an overview of your 3D print orders.</p>
         </div>
         <Link
           href="/orders/new"
           className="inline-flex items-center gap-2 px-5 py-2.5 font-medium rounded-lg transition-all text-sm"
-          style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+          style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
         >
           <Plus className="w-4 h-4" /> New Order
         </Link>
@@ -62,8 +62,8 @@ export default async function DashboardPage() {
           { label: 'Delivered', value: stats.delivered, icon: <CheckCircle2 className="w-5 h-5" /> },
         ].map((stat) => (
           <Card key={stat.label} hover>
-            <div style={{ color: '#C9920A' }} className="mb-3">{stat.icon}</div>
-            <p className="text-3xl font-light" style={{ color: '#F5F4F0' }}>{stat.value}</p>
+            <div style={{ color: '#C9A84C' }} className="mb-3">{stat.icon}</div>
+            <p className="text-3xl font-light" style={{ color: '#F5F0E8' }}>{stat.value}</p>
             <p className="text-sm mt-1" style={{ color: '#6B6B6B' }}>{stat.label}</p>
           </Card>
         ))}
@@ -82,15 +82,15 @@ export default async function DashboardPage() {
 
         {allOrders.length === 0 ? (
           <Card className="text-center py-12">
-            <div className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(201,146,10,0.1)' }}>
-              <Package className="w-8 h-8" style={{ color: '#C9920A' }} />
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(201,168,76,0.1)' }}>
+              <Package className="w-8 h-8" style={{ color: '#C9A84C' }} />
             </div>
-            <h3 className="text-lg font-light mb-2" style={{ color: '#F5F4F0' }}>No orders yet</h3>
+            <h3 className="text-lg font-light mb-2" style={{ color: '#F5F0E8' }}>No orders yet</h3>
             <p className="text-sm mb-6" style={{ color: '#6B6B6B' }}>Start your first print.</p>
             <Link
               href="/orders/new"
               className="inline-flex items-center gap-2 px-5 py-2.5 font-medium rounded-lg transition-all text-sm"
-              style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+              style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
             >
               <Plus className="w-4 h-4" /> Place Your First Order
             </Link>
@@ -100,8 +100,8 @@ export default async function DashboardPage() {
             {allOrders.slice(0, 3).map((order, i) => (
               <Link key={order.id} href={`/orders/${order.id}`}>
                 <Card hover className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: `${i * 80}ms` }}>
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(201,146,10,0.1)' }}>
-                    <Package className="w-5 h-5" style={{ color: '#C9920A' }} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(201,168,76,0.1)' }}>
+                    <Package className="w-5 h-5" style={{ color: '#C9A84C' }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">

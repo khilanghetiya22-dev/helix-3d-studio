@@ -127,7 +127,7 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
       </Card>
 
       {/* Admin Controls */}
-      <Card className="mb-6" style={{ border: '1px solid rgba(201,146,10,0.2)', backgroundColor: 'rgba(201,146,10,0.03)' }}>
+      <Card className="mb-6" style={{ border: '1px solid rgba(201,168,76,0.2)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
         <h2 className="text-base font-semibold text-text-primary mb-4">⚙️ Admin Controls</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
@@ -160,10 +160,10 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
       </Card>
 
       {/* Set Final Price */}
-      <Card className="mb-6" style={{ border: '1px solid rgba(201,146,10,0.25)', backgroundColor: 'rgba(201,146,10,0.03)' }}>
+      <Card className="mb-6" style={{ border: '1px solid rgba(201,168,76,0.25)', backgroundColor: 'rgba(201,168,76,0.03)' }}>
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,146,10,0.1)' }}>
-            <DollarSign className="w-4 h-4" style={{ color: '#C9920A' }} />
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(201,168,76,0.1)' }}>
+            <DollarSign className="w-4 h-4" style={{ color: '#C9A84C' }} />
           </div>
           <h2 className="text-base font-semibold text-text-primary">Set Final Price</h2>
         </div>
@@ -171,7 +171,7 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
         {order.estimated_price != null && (
           <div className="flex items-center gap-4 mb-3 text-sm">
             <span style={{ color: '#6B6B6B' }}>Estimated:</span>
-            <span className="font-medium" style={{ color: '#F5F4F0' }}>{formatCurrency(order.estimated_price)}</span>
+            <span className="font-medium" style={{ color: '#F5F0E8' }}>{formatCurrency(order.estimated_price)}</span>
           </div>
         )}
 
@@ -188,8 +188,8 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
               className="w-full pl-7 pr-4 py-2.5 rounded-xl text-sm focus:outline-none transition-all"
               style={{
                 backgroundColor: '#111',
-                border: '1px solid rgba(201,146,10,0.2)',
-                color: '#F5F4F0',
+                border: '1px solid rgba(201,168,76,0.2)',
+                color: '#F5F0E8',
               }}
             />
           </div>
@@ -197,7 +197,7 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
             onClick={handleSetFinalPrice}
             disabled={priceSaving}
             className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all disabled:opacity-50"
-            style={{ backgroundColor: '#C9920A', color: '#1A1A1A' }}
+            style={{ backgroundColor: '#C9A84C', color: '#0A0A0F' }}
           >
             {priceSaving ? 'Saving...' : 'Set Final Price'}
           </button>
@@ -206,12 +206,12 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
         {order.final_price != null && (
           <div className="mt-3 flex items-center gap-2">
             <span className="text-xs" style={{ color: '#6B6B6B' }}>Current final price:</span>
-            <span className="text-lg font-bold" style={{ color: '#C9920A' }}>{formatCurrency(order.final_price)}</span>
+            <span className="text-lg font-bold" style={{ color: '#C9A84C' }}>{formatCurrency(order.final_price)}</span>
           </div>
         )}
 
-        {priceSaved && <p className="text-sm mt-2 animate-fade-in" style={{ color: '#C9920A' }}>✓ Final price set</p>}
-        {priceError && <p className="text-sm mt-2 animate-fade-in" style={{ color: '#C9920A' }}>✗ {priceError}</p>}
+        {priceSaved && <p className="text-sm mt-2 animate-fade-in" style={{ color: '#C9A84C' }}>✓ Final price set</p>}
+        {priceError && <p className="text-sm mt-2 animate-fade-in" style={{ color: '#C9A84C' }}>✗ {priceError}</p>}
       </Card>
 
       <div className="grid lg:grid-cols-3 gap-6">
@@ -255,7 +255,7 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
       {(order.material_cost != null || order.estimated_price != null) && (
         <Card className="mt-6">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="w-4 h-4" style={{ color: '#C9920A' }} />
+            <TrendingUp className="w-4 h-4" style={{ color: '#C9A84C' }} />
             <h2 className="text-base font-semibold text-text-primary">Pricing Breakdown</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm">
@@ -289,16 +289,16 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
               <PriceRow label="Platform (10%)" value={formatCurrency(order.platform_fee)} />
             )}
           </div>
-          <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: '0.5px solid rgba(201,146,10,0.3)' }}>
+          <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: '0.5px solid rgba(201,168,76,0.3)' }}>
             <span className="text-sm font-medium" style={{ color: '#9CA3AF' }}>Estimated Total</span>
-            <span className="text-lg font-bold" style={{ color: '#F5F4F0' }}>
+            <span className="text-lg font-bold" style={{ color: '#F5F0E8' }}>
               {formatCurrency(order.estimated_price)}
             </span>
           </div>
           {order.final_price != null && (
             <div className="mt-2 flex items-center justify-between">
-              <span className="text-sm font-medium" style={{ color: '#C9920A' }}>Final Price (confirmed)</span>
-              <span className="text-lg font-bold" style={{ color: '#C9920A' }}>
+              <span className="text-sm font-medium" style={{ color: '#C9A84C' }}>Final Price (confirmed)</span>
+              <span className="text-lg font-bold" style={{ color: '#C9A84C' }}>
                 {formatCurrency(order.final_price)}
               </span>
             </div>
@@ -346,7 +346,7 @@ function PriceRow({ label, value, detail }: { label: string; value: string; deta
     <div className="flex items-center justify-between py-1.5 border-b border-border-primary/30">
       <span style={{ color: '#6B6B6B' }}>{label}</span>
       <div className="text-right">
-        <span className="font-medium" style={{ color: '#F5F4F0' }}>{value}</span>
+        <span className="font-medium" style={{ color: '#F5F0E8' }}>{value}</span>
         {detail && <span className="text-[10px] ml-1.5" style={{ color: '#6B6B6B' }}>· {detail}</span>}
       </div>
     </div>

@@ -127,7 +127,7 @@ export default function ModelPreview3D({ files, onVolumeCalculated, onDimensions
     dirLight2.position.set(-100, 50, -100);
     scene.add(dirLight2);
 
-    // Grid floor — gold-tinted per FORMIQ brand
+    // Grid floor — gold-tinted per HELIX brand
     const gridHelper = new THREE.GridHelper(200, 20, 0x3D2E0A, 0x2A2005);
     scene.add(gridHelper);
 
@@ -342,7 +342,7 @@ export default function ModelPreview3D({ files, onVolumeCalculated, onDimensions
 
       {/* Preview canvas */}
       {hasPreviewable && (
-        <div className="relative rounded-2xl overflow-hidden border border-border-primary bg-[#1a1a1a]">
+        <div className="relative rounded-2xl overflow-hidden border border-border-primary bg-[#0A0A0F]">
           {/* Toolbar */}
           <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
             <button
@@ -373,7 +373,7 @@ export default function ModelPreview3D({ files, onVolumeCalculated, onDimensions
 
           {/* Loading overlay */}
           {loading && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#1a1a1a]/80 backdrop-blur-sm">
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#0A0A0F]/80 backdrop-blur-sm">
               <div className="flex flex-col items-center gap-3">
                 <Loader2 className="w-8 h-8 text-primary animate-spin" />
                 <p className="text-sm text-text-secondary">Loading model...</p>
@@ -383,7 +383,7 @@ export default function ModelPreview3D({ files, onVolumeCalculated, onDimensions
 
           {/* Error overlay */}
           {error && !loading && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#1a1a1a]/80 backdrop-blur-sm">
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#0A0A0F]/80 backdrop-blur-sm">
               <div className="flex flex-col items-center gap-3 text-center px-6">
                 <AlertCircle className="w-8 h-8 text-danger" />
                 <p className="text-sm text-text-secondary">{error}</p>
