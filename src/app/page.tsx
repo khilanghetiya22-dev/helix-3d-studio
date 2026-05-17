@@ -477,7 +477,7 @@ export default async function LandingPage() {
               </div>
             </div>
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent("Hi, I'd like to know more about HELIX 3D printing")}`}
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918487842209'}?text=${encodeURIComponent("Hi, I'd like to know more about HELIX 3D printing")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all btn-glow"

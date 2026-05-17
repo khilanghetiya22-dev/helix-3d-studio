@@ -34,7 +34,7 @@ function YouTubeIcon() {
 }
 
 export default function Footer() {
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918487842209';
 
   return (
     <footer style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)', backgroundColor: '#111111' }}>
