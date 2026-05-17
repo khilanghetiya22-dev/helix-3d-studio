@@ -11,6 +11,7 @@ import type { Profile } from '@/lib/types';
 
 const navLinks = [
   { label: 'Services', href: '/services' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
