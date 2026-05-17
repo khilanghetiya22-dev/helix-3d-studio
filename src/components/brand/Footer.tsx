@@ -186,7 +186,7 @@ export default function Footer() {
         <div className="pt-4" style={{ borderTop: '0.5px solid rgba(201,168,76,0.1)' }}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs" style={{ color: '#6B6B6B' }}>
-              © 2025 HELIX 3D Studio · helix.studio
+              © 2026 HELIX 3D Studio · helix.studio
             </p>
             <p className="tagline text-xs" style={{ color: 'rgba(201,168,76,0.5)' }}>
               Where ideas take shape.

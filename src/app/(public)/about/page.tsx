@@ -54,9 +54,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden py-24 sm:py-32">
         <div className="grid-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
-            Established · MMXXV
-          </p>
+
           <h1 className="page-heading text-4xl sm:text-5xl mb-6" style={{ color: '#F5F0E8' }}>
             About <span style={{ color: '#C9A84C' }}>HELIX</span>
           </h1>

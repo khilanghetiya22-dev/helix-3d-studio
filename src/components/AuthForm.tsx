@@ -117,10 +117,6 @@ export default function AuthForm({ mode }: AuthFormProps) {
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center" style={{ backgroundColor: '#0D1B2A' }}>
         <div className="grid-pattern absolute inset-0 opacity-20" />
         <div className="relative z-10 max-w-md text-center px-8">
-          {/* Established */}
-          <p className="text-xs tracking-widest uppercase mb-8" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
-            Established · MMXXV
-          </p>
 
           {/* Brand name */}
           <h1 className="brand-name text-5xl mb-2" style={{ color: '#F5F0E8' }}>HELIX</h1>

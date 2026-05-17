@@ -122,10 +122,7 @@ export default async function LandingPage() {
         <div className="grid-pattern absolute inset-0 opacity-30" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28 sm:pt-28 sm:pb-36">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            {/* Established badge */}
-            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#C9A84C', letterSpacing: '0.2em' }}>
-              EST. 2026
-            </p>
+
 
             <h1 className="page-heading text-4xl sm:text-5xl lg:text-6xl leading-tight" style={{ color: '#F5F0E8' }}>
               Precision 3D Printing,{' '}
