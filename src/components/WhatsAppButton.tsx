@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
-  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918487842209';
   const message = encodeURIComponent("Hi, I'd like to know more about HELIX 3D Studio");
   const href = `https://wa.me/${waNumber}?text=${message}`;
 
