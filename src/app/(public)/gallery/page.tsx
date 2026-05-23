@@ -32,14 +32,14 @@ const PRINT_PHOTOS = [
   {
     src: '/gallery/print_architectural_model.png',
     title: 'Architectural Scale Model',
-    tech: 'SLA · White Resin',
-    desc: 'Ultra-fine detail architectural model with sub-millimetre feature resolution using SLA resin printing.',
+    tech: 'FDM · White PLA',
+    desc: 'Detailed architectural scale model printed with fine-layer FDM for crisp edges and clean surfaces.',
   },
   {
     src: '/gallery/print_dragon_figurine.png',
     title: 'Dragon Figurine',
-    tech: 'SLA · Translucent Blue Resin',
-    desc: 'Highly detailed collectible figurine showcasing the stunning surface finish achievable with resin printing.',
+    tech: 'FDM · Black PLA',
+    desc: 'Highly detailed collectible figurine showcasing the surface quality achievable with fine-layer FDM printing.',
   },
   {
     src: '/gallery/print_prosthetic_hand.png',
@@ -49,11 +49,12 @@ const PRINT_PHOTOS = [
   },
   {
     src: '/gallery/print_jewelry_ring.png',
-    title: 'DMLS Metal Jewellery',
-    tech: 'DMLS · Gold-Finish Metal',
-    desc: 'Intricate lattice-patterned ring produced using Direct Metal Laser Sintering for luxury jewellery applications.',
+    title: 'Custom Lattice Ring',
+    tech: 'FDM · White PLA',
+    desc: 'Intricate lattice-patterned ring prototype produced with fine-layer FDM for design validation.',
   },
 ];
+
 
 export default function GalleryPage() {
   const [files, setFiles] = useState<{ file: File; id: string; error?: string }[]>([]);
