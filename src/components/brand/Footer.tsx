@@ -40,8 +40,6 @@ export default function Footer() {
     <footer style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)', backgroundColor: '#111111' }}>
       {/* Scoped hover styles */}
       <style>{`
-        .footer-service-link { color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
-        .footer-service-link:hover { color: #C9A84C; }
         .footer-nav-link { color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
         .footer-nav-link:hover { color: #C9A84C; }
         .footer-social-icon { color: rgba(201,168,76,0.5); transition: color 0.2s; display: flex; align-items: center; }
@@ -49,7 +47,7 @@ export default function Footer() {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -64,26 +62,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services — V11: every item must be an <a> tag linking to /services#slug */}
-          <div>
-            <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Services</h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'FDM Printing', href: '/services#fdm' },
-                { label: 'SLA / DLP Resin', href: '/services#sla' },
-                { label: 'SLS Powder Bed', href: '/services#sls' },
-                { label: 'DMLS Metal', href: '/services#dmls' },
-                { label: 'PolyJet', href: '/services#polyjet' },
-                { label: 'Binder Jetting', href: '/services#binder-jetting' },
-              ].map((s) => (
-                <li key={s.label}>
-                  <a href={s.href} className="footer-service-link text-sm">
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Company */}
           <div>
@@ -182,7 +160,7 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Bottom bar — V11: numeric year 2025 for SEO */}
+        {/* Bottom bar — V12: numeric year 2026 for SEO */}
         <div className="pt-4" style={{ borderTop: '0.5px solid rgba(201,168,76,0.1)' }}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs" style={{ color: '#6B6B6B' }}>
