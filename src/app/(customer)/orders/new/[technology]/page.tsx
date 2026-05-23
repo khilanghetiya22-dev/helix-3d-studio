@@ -281,7 +281,7 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
                     <button key={c.value} type="button" onClick={() => update('color', c.value)}
                       className={`flex flex-col items-center gap-1.5 p-2.5 rounded-xl border transition-all ${form.color === c.value ? 'border-primary bg-primary/10 shadow-md' : 'border-border-primary hover:border-border-secondary bg-bg-secondary'}`}>
                       <div className="w-8 h-8 rounded-lg border border-border-primary shadow-inner" style={{
-                        background: c.hex === 'transparent' ? 'repeating-conic-gradient(#334155 0% 25%, #1E293B 0% 50%) 50% / 12px 12px' : c.hex
+                        background: c.hex
                       }} />
                       <span className="text-[10px] text-text-secondary">{c.label}</span>
                     </button>
