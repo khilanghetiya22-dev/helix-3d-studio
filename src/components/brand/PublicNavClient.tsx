@@ -215,10 +215,9 @@ export default function PublicNavClient({ user }: PublicNavClientProps) {
             <div
               ref={accountRef}
               className="relative"
-              onMouseEnter={() => setAccountOpen(true)}
-              onMouseLeave={() => setAccountOpen(false)}
             >
               <button
+                onClick={() => setAccountOpen((o) => !o)}
                 className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-all rounded-lg"
                 style={{
                   color: '#9CA3AF',
@@ -243,6 +242,7 @@ export default function PublicNavClient({ user }: PublicNavClientProps) {
                     <Link
                       key={item.href}
                       href={item.href}
+                      onClick={() => setAccountOpen(false)}
                       className="block px-4 py-2.5 text-sm transition-all"
                       style={{ color: '#9CA3AF', borderLeft: '2px solid transparent' }}
                       onMouseEnter={(e) => {
