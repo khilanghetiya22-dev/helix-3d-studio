@@ -27,6 +27,7 @@ const SAMPLE_GALLERY = [
     bg: 'linear-gradient(135deg, #0D1B2A 0%, #0f1a2e 100%)',
     icon: '⚙️',
     accent: '#C9A84C',
+    color: 'White',
   },
   {
     tech: 'FDM',
@@ -35,6 +36,7 @@ const SAMPLE_GALLERY = [
     bg: 'linear-gradient(135deg, #0D1B2A 0%, #1a1a3e 100%)',
     icon: '📦',
     accent: '#C9A84C',
+    color: 'Black',
   },
   {
     tech: 'FDM',
@@ -43,6 +45,34 @@ const SAMPLE_GALLERY = [
     bg: 'linear-gradient(135deg, #0D1B2A 0%, #0d2010 100%)',
     icon: '🔩',
     accent: '#C9A84C',
+    color: 'White',
+  },
+  {
+    tech: 'FDM',
+    material: 'TPU',
+    label: 'Flexible Gasket',
+    bg: 'linear-gradient(135deg, #0D1B2A 0%, #1a0f00 100%)',
+    icon: '🔗',
+    accent: '#C9A84C',
+    color: 'Black',
+  },
+  {
+    tech: 'FDM',
+    material: 'Nylon',
+    label: 'Gear Assembly',
+    bg: 'linear-gradient(135deg, #0D1B2A 0%, #0f2020 100%)',
+    icon: '🏷️',
+    accent: '#C9A84C',
+    color: 'White',
+  },
+  {
+    tech: 'FDM',
+    material: 'PLA',
+    label: 'Custom Jig',
+    bg: 'linear-gradient(135deg, #0D1B2A 0%, #1f1a0d 100%)',
+    icon: '🛠️',
+    accent: '#C9A84C',
+    color: 'Black',
   },
 ];
 
@@ -57,19 +87,19 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      'I needed precise dental models in SLA resin with < 0.1mm tolerance. HELIX nailed every single piece. The 3D preview feature let me verify my design before committing.',
+      'I needed PETG enclosures for my electronics project. HELIX\'s online pricing tool gave me an accurate quote instantly, and delivery was right on time. Excellent service!',
     name: 'Dr. Priya Nair',
     city: 'Kochi, Kerala',
     rating: 5,
-    technology: 'SLA',
+    technology: 'FDM',
   },
   {
     quote:
-      'Ordered a stainless steel DMLS part for our aerospace prototype. Turnaround was 10 days including post-processing. The surface finish was exceptional. Highly recommend HELIX.',
+      'Ordered custom Nylon parts for our robotics team. The 3D preview feature let us verify the design before printing. Dimensional accuracy was spot-on. Highly recommend HELIX.',
     name: 'Vikram Singh',
     city: 'Bengaluru, Karnataka',
     rating: 5,
-    technology: 'DMLS',
+    technology: 'FDM',
   },
 ];
 
@@ -128,9 +158,9 @@ export default async function LandingPage() {
             {/* Hero Stats — V11: Ships in 3–7 Days instead of 500MB Max Upload */}
             <div className="mt-16 grid grid-cols-3 gap-4 max-w-md mx-auto">
               {[
-                { value: '1', label: 'Technology' },
+                { value: 'FDM', label: 'Technology' },
                 { value: '5+', label: 'Materials' },
-                { value: '2–4', label: 'Ships in Days' },
+                { value: 'Pan-India', label: 'Ships' },
               ].map((s) => (
                 <div
                   key={s.label}
@@ -416,42 +446,6 @@ export default async function LandingPage() {
             {TESTIMONIALS.map((t, i) => (
               <TestimonialCard key={i} {...t} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHATSAPP CTA STRIP ── */}
-      <section className="py-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="rounded-xl flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-6"
-            style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.25)' }}
-          >
-            <div className="flex items-center gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: '#25D366' }}
-              >
-                <MessageCircle className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="font-medium" style={{ color: '#F5F0E8', letterSpacing: '0.02em' }}>
-                  Questions? Chat with us on WhatsApp
-                </p>
-                <p className="text-sm mt-0.5" style={{ color: '#6B6B6B' }}>
-                  Typical response in under 1 hour · Mon – Sat, 9 AM – 7 PM
-                </p>
-              </div>
-            </div>
-            <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918487842209'}?text=${encodeURIComponent("Hi, I'd like to know more about HELIX 3D printing")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm transition-all btn-glow"
-              style={{ backgroundColor: '#25D366', color: '#fff', letterSpacing: '0.04em' }}
-            >
-              Chat on WhatsApp
-            </a>
           </div>
         </div>
       </section>

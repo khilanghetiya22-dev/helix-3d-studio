@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HelixIcon from '@/components/brand/HelixIcon';
 import HelixWordmark from '@/components/brand/HelixWordmark';
 
-// Social icon SVGs (inline, gold strokes)
+// Social icon SVGs — Instagram only (v14 spec)
 function InstagramIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -14,30 +14,12 @@ function InstagramIcon() {
   );
 }
 
-function LinkedInIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
-function YouTubeIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.95 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z" />
-      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-    </svg>
-  );
-}
-
 export default function Footer() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918487842209';
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/helixprint.in';
 
   return (
-    <footer style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)', backgroundColor: '#111111' }}>
+    <footer style={{ borderTop: '0.5px solid rgba(201,168,76,0.25)', backgroundColor: '#111111' }}>
       {/* Scoped hover styles */}
       <style>{`
         .footer-nav-link { color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
@@ -47,9 +29,11 @@ export default function Footer() {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* 4-column grid: Brand (wide) · Company · Platform · Contact */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-2">
+
+          {/* 1. Brand column */}
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <HelixIcon size={36} variant="dark" />
               <HelixWordmark size="sm" />
@@ -62,8 +46,7 @@ export default function Footer() {
             </p>
           </div>
 
-
-          {/* Company */}
+          {/* 2. Company column */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Company</h4>
             <ul className="space-y-2.5">
@@ -83,56 +66,68 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Platform + Contact */}
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Platform</h4>
-              <ul className="space-y-2.5">
-                {[
-                  { label: 'Place Order', href: '/orders/new' },
-                  { label: 'My Dashboard', href: '/dashboard' },
-                  { label: 'Sign Up', href: '/signup' },
-                  { label: 'Log In', href: '/login' },
-                ].map((l) => (
-                  <li key={l.label}>
-                    <Link href={l.href} className="footer-nav-link text-sm">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Contact</h4>
-              <ul className="space-y-2.5 text-sm">
-                <li>
-                  <a href="mailto:hello@helix.studio" className="footer-nav-link">
-                    hello@helix.studio
-                  </a>
+          {/* 3. Platform column */}
+          <div>
+            <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Platform</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: 'My Dashboard', href: '/dashboard' },
+                { label: 'Place an Order', href: '/orders/new' },
+                { label: 'My Orders', href: '/orders' },
+                { label: 'Track Order', href: '/orders' },
+                { label: 'Log In', href: '/login' },
+                { label: 'Sign Up', href: '/signup' },
+              ].map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="footer-nav-link text-sm">
+                    {l.label}
+                  </Link>
                 </li>
-                <li>
-                  <a
-                    href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hi, I'd like to know more about HELIX 3D printing")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="footer-nav-link"
-                  >
-                    WhatsApp Us
-                  </a>
-                </li>
-                <li style={{ color: '#6B6B6B' }}>Ahmedabad, Gujarat, India</li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
+
+          {/* 4. Contact column */}
+          <div>
+            <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Contact</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <a href="mailto:khilanghetiya22@gmail.com" className="footer-nav-link">
+                  khilanghetiya22@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hi, I'd like to know more about HELIX 3D printing")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-nav-link"
+                >
+                  WhatsApp Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${waNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-nav-link"
+                >
+                  +91 84878 42209
+                </a>
+              </li>
+              <li style={{ color: '#6B6B6B' }}>Ahmedabad, Gujarat, India</li>
+            </ul>
           </div>
         </div>
 
-        {/* Social icons row */}
+        {/* Social icons row — Instagram only */}
         <div
           className="mt-10 pt-6 pb-4 flex items-center justify-center gap-5"
           style={{ borderTop: '0.5px solid rgba(201,168,76,0.15)' }}
         >
           <a
-            href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/helix.studio'}
+            href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -140,31 +135,13 @@ export default function Footer() {
           >
             <InstagramIcon />
           </a>
-          <a
-            href={process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://linkedin.com/company/helix'}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="footer-social-icon"
-          >
-            <LinkedInIcon />
-          </a>
-          <a
-            href={process.env.NEXT_PUBLIC_YOUTUBE_URL || 'https://youtube.com/@helix'}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            className="footer-social-icon"
-          >
-            <YouTubeIcon />
-          </a>
         </div>
 
-        {/* Bottom bar — V12: numeric year 2026 for SEO */}
+        {/* Bottom bar — v14: helixprint.in */}
         <div className="pt-4" style={{ borderTop: '0.5px solid rgba(201,168,76,0.1)' }}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs" style={{ color: '#6B6B6B' }}>
-              © 2026 HELIX 3D Studio · helix.studio
+              © 2026 HELIX 3D Studio · helixprint.in
             </p>
             <p className="tagline text-xs" style={{ color: 'rgba(201,168,76,0.5)' }}>
               Where ideas take shape.
