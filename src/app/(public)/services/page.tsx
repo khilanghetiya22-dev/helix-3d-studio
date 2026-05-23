@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Printer } from 'lucide-react';
-import Footer from '@/components/brand/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata = {
   title: 'Services — HELIX 3D Studio',
@@ -245,9 +243,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-      <WhatsAppButton />
     </div>
   );
 }
