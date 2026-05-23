@@ -17,16 +17,6 @@ export const MATERIALS = [
 export const COLORS = [
   { value: 'white', label: 'White', hex: '#FFFFFF' },
   { value: 'black', label: 'Black', hex: '#0A0A0F' },
-  { value: 'gray', label: 'Gray', hex: '#6B7280' },
-  { value: 'red', label: 'Red', hex: '#EF4444' },
-  { value: 'blue', label: 'Blue', hex: '#3B82F6' },
-  { value: 'green', label: 'Green', hex: '#10B981' },
-  { value: 'yellow', label: 'Yellow', hex: '#F59E0B' },
-  { value: 'orange', label: 'Orange', hex: '#F97316' },
-  { value: 'purple', label: 'Purple', hex: '#8B5CF6' },
-  { value: 'pink', label: 'Pink', hex: '#EC4899' },
-  { value: 'transparent', label: 'Transparent', hex: 'transparent' },
-  { value: 'custom', label: 'Custom Color', hex: '#94A3B8' },
 ] as const;
 
 export const INFILL_OPTIONS = [

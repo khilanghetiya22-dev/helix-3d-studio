@@ -12,17 +12,11 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata = {
   title: 'HELIX — 3D Print Studio',
-  description: 'Where ideas take shape. Professional 3D printing services for FDM, SLA, SLS, DMLS and more. Ships pan-India in 3–7 days.',
+  description: 'Where ideas take shape. Professional FDM 3D printing services. Ships pan-India in 3–7 days.',
 };
 
 const TECH_STRIP = [
   { slug: 'fdm', name: 'FDM', icon: '🖨️', desc: 'Functional prototypes', from: 49 },
-  { slug: 'sla', name: 'SLA', icon: '💧', desc: 'High detail resin', from: 120 },
-  { slug: 'dlp', name: 'DLP', icon: '⚡', desc: 'Fast resin prints', from: 108 },
-  { slug: 'sls', name: 'SLS', icon: '🌀', desc: 'No-support powder', from: 198 },
-  { slug: 'dmls', name: 'DMLS', icon: '🔩', desc: 'Metal functional parts', from: 800 },
-  { slug: 'polyjet', name: 'PolyJet', icon: '🎨', desc: 'Multi-material', from: 295 },
-  { slug: 'binder-jetting', name: 'Binder Jetting', icon: '🏺', desc: 'Full color models', from: 200 },
 ];
 
 const SAMPLE_GALLERY = [
@@ -35,43 +29,19 @@ const SAMPLE_GALLERY = [
     accent: '#C9A84C',
   },
   {
-    tech: 'SLA',
-    material: 'Tough Resin',
-    label: 'Detailed Miniature',
+    tech: 'FDM',
+    material: 'ABS',
+    label: 'Enclosure Shell',
     bg: 'linear-gradient(135deg, #0D1B2A 0%, #1a1a3e 100%)',
-    icon: '🏛️',
+    icon: '📦',
     accent: '#C9A84C',
   },
   {
-    tech: 'SLS',
-    material: 'Nylon PA12',
-    label: 'Complex Assembly',
+    tech: 'FDM',
+    material: 'PETG',
+    label: 'Functional Clip',
     bg: 'linear-gradient(135deg, #0D1B2A 0%, #0d2010 100%)',
-    icon: '🌐',
-    accent: '#C9A84C',
-  },
-  {
-    tech: 'DMLS',
-    material: 'Stainless Steel',
-    label: 'Aerospace Part',
-    bg: 'linear-gradient(135deg, #0D1B2A 0%, #1a1010 100%)',
-    icon: '🚀',
-    accent: '#C9A84C',
-  },
-  {
-    tech: 'PolyJet',
-    material: 'Multi-material',
-    label: 'Medical Prototype',
-    bg: 'linear-gradient(135deg, #0D1B2A 0%, #1a0a2a 100%)',
-    icon: '🩺',
-    accent: '#C9A84C',
-  },
-  {
-    tech: 'DLP',
-    material: 'Castable Resin',
-    label: 'Jewelry Master',
-    bg: 'linear-gradient(135deg, #0D1B2A 0%, #2a1a0a 100%)',
-    icon: '💎',
+    icon: '🔩',
     accent: '#C9A84C',
   },
 ];
@@ -134,7 +104,7 @@ export default async function LandingPage() {
             </p>
 
             <p className="mt-4 text-base max-w-2xl mx-auto leading-relaxed" style={{ color: '#9CA3AF' }}>
-              Upload your CAD files, choose from 19+ materials across 7 technologies, and get professional-quality prints delivered across India.
+              Upload your CAD files, choose from 5+ materials, and get professional-quality FDM prints delivered across India.
             </p>
 
             {/* CTAs — V11 spec: "Place an Order" (gold filled) + "View Services" (outlined) */}
@@ -158,9 +128,9 @@ export default async function LandingPage() {
             {/* Hero Stats — V11: Ships in 3–7 Days instead of 500MB Max Upload */}
             <div className="mt-16 grid grid-cols-3 gap-4 max-w-md mx-auto">
               {[
-                { value: '7', label: 'Technologies' },
-                { value: '19+', label: 'Materials' },
-                { value: '3–7', label: 'Ships in Days' },
+                { value: '1', label: 'Technology' },
+                { value: '5+', label: 'Materials' },
+                { value: '2–4', label: 'Ships in Days' },
               ].map((s) => (
                 <div
                   key={s.label}
@@ -182,11 +152,11 @@ export default async function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="page-heading text-2xl sm:text-3xl" style={{ color: '#F5F0E8' }}>
-              7 Printing Technologies
+              FDM Printing Technology
             </h2>
             <div className="gold-rule w-12 mx-auto mt-3 mb-3" />
             <p className="text-sm" style={{ color: '#6B6B6B' }}>
-              The right process for every project — from FDM prototypes to metal DMLS parts
+              Fast, affordable, and versatile — FDM for every project
             </p>
           </div>
           <div
@@ -405,8 +375,8 @@ export default async function LandingPage() {
               },
               {
                 icon: <Layers className="w-5 h-5" />,
-                title: '7 Technologies',
-                desc: 'FDM, SLA, DLP, SLS, DMLS, PolyJet, Binder Jetting — the right tech for every project and budget.',
+                title: 'FDM Technology',
+                desc: 'Fused Deposition Modeling — fast, affordable, and versatile for prototypes, jigs, fixtures, and consumer products.',
               },
             ].map((f) => (
               <div

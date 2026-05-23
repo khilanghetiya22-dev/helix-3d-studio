@@ -5,12 +5,6 @@
  */
 export const TECH_SPEED_FACTORS: Record<string, number> = {
   fdm: 1.0,
-  sla: 0.8,
-  dlp: 0.6,
-  sls: 1.2,
-  dmls: 2.5,
-  polyjet: 0.9,
-  'binder-jetting': 1.1,
 };
 
 /**

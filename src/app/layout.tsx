@@ -3,8 +3,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'HELIX — 3D Print Studio',
-  description: 'Where ideas take shape. Professional 3D printing services — FDM, SLA, SLS, DMLS and more.',
-  keywords: ['3D printing', 'HELIX', 'FDM', 'SLA', 'SLS', 'DMLS', 'CAD files', 'prototyping', '3D print studio'],
+  description: 'Where ideas take shape. Professional FDM 3D printing services — fast, affordable, pan-India delivery.',
+  keywords: ['3D printing', 'HELIX', 'FDM', 'CAD files', 'prototyping', '3D print studio', 'Ahmedabad'],
   openGraph: {
     title: 'HELIX 3D Studio',
     description: 'Where ideas take shape.',
