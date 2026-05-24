@@ -4,7 +4,7 @@ import { ArrowRight, Cpu, Layers, Zap, Target, Award, Globe } from 'lucide-react
 
 export const metadata = {
   title: 'About Us — HELIX 3D Studio',
-  description: 'Learn about HELIX — India\'s premium 3D printing studio offering FDM, SLA, SLS, DMLS and more from Ahmedabad.',
+  description: 'Learn about HELIX — India\'s premium FDM 3D printing studio based in Ahmedabad. Professional-grade prints delivered pan-India.',
 };
 
 const values = [
@@ -30,8 +30,8 @@ const values = [
   },
   {
     icon: <Layers className="w-5 h-5" />,
-    title: '7 Technologies',
-    desc: 'FDM, SLA, DLP, SLS, DMLS, PolyJet, Binder Jetting — we pick the right process for your geometry and material requirements.',
+    title: 'FDM Focused',
+    desc: 'We specialise in FDM (Fused Deposition Modeling) — the most versatile 3D printing technology. PLA, ABS, PETG, TPU, and Nylon available.',
   },
   {
     icon: <Cpu className="w-5 h-5" />,
@@ -89,14 +89,14 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Today, HELIX serves engineers, product designers, architects, educators, and hobbyists across
-                  India with 7 different printing technologies and 19+ materials.
+                  India with professional FDM printing and 5+ materials.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: '7', label: 'Technologies' },
-                { value: '19+', label: 'Materials' },
+                { value: 'FDM', label: 'Technology' },
+                { value: '5+', label: 'Materials' },
                 { value: '28', label: 'States Served' },
                 { value: '100%', label: 'Quality Checked' },
               ].map((s) => (
