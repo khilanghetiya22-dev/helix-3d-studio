@@ -339,17 +339,19 @@ export default async function LandingPage() {
 
       {/* ── BULK ORDER CTA BANNER ── */}
       <section className="max-w-4xl mx-auto px-4 pt-16">
+        <style dangerouslySetInnerHTML={{__html: `
+          .bulk-cta-card {
+            border: 0.5px solid rgba(201,168,76,0.2);
+            transition: border-color 0.2s;
+          }
+          .bulk-cta-card:hover {
+            border-color: #C9A84C !important;
+          }
+        `}} />
         <div
-          className="rounded-xl p-5 text-center transition-colors"
+          className="rounded-xl p-5 text-center bulk-cta-card transition-colors"
           style={{
             backgroundColor: '#0D1B2A',
-            border: '0.5px solid rgba(201,168,76,0.2)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#C9A84C';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)';
           }}
         >
           <p className="text-sm" style={{ color: '#9CA3AF' }}>

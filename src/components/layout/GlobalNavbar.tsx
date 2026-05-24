@@ -1,17 +1,54 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Navbar from '../Navbar';
 import PublicNavClient from '../brand/PublicNavClient';
+import { createClient } from '@/lib/supabase/client';
 import type { Profile } from '@/lib/types';
 
-interface GlobalNavbarProps {
-  initialProfile: Profile | null;
-}
-
-export function GlobalNavbar({ initialProfile }: GlobalNavbarProps) {
+export function GlobalNavbar() {
   const pathname = usePathname();
+  const [profile, setProfile] = useState<Profile | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    async function fetchProfile() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+          if (!error && data) {
+            setProfile(data);
+          }
+        } else {
+          setProfile(null);
+        }
+      } catch (err) {
+        console.error('Error fetching profile in GlobalNavbar:', err);
+      }
+    }
+
+    fetchProfile();
+
+    // Dynamically listen to auth state changes (login, logout, token refresh)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        fetchProfile();
+      } else {
+        setProfile(null);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   // Hide navbars on auth screens (full-bleed design)
   if (pathname === '/login' || pathname === '/signup') {
@@ -26,9 +63,9 @@ export function GlobalNavbar({ initialProfile }: GlobalNavbarProps) {
     pathname.startsWith('/profile');
 
   if (isInternalPage) {
-    return <Navbar user={initialProfile} />;
+    return <Navbar user={profile} />;
   }
 
   // Public pages render the public hover-dropdown Navbar
-  return <PublicNavClient user={initialProfile} />;
+  return <PublicNavClient user={profile} />;
 }
