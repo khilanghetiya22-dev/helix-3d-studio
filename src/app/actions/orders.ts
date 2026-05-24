@@ -3,7 +3,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { orderSchema, statusUpdateSchema } from '@/lib/validations';
 import { sendOrderConfirmation, sendAdminNewOrderAlert, sendStatusUpdateEmail } from '@/lib/email';
-import type { OrderStatus } from '@/lib/types';
+import type { OrderStatus, Address } from '@/lib/types';
 
 interface ActionResult {
   success: boolean;
@@ -23,13 +23,7 @@ export async function submitOrder(formData: {
   quality: string;
   quantity: number;
   instructions: string;
-  address_json: {
-    street: string;
-    city: string;
-    state: string;
-    pincode: string;
-    country: string;
-  };
+  address_json: Address;
   fileCount: number;
   estimated_weight_g?: number | null;
   estimated_volume_cm3?: number | null;
@@ -42,7 +36,7 @@ export async function submitOrder(formData: {
   shipping_fee?: number | null;
   shipping_zone?: string | null;
   platform_fee?: number | null;
-  shipping_tier?: 'standard' | 'express' | 'overnight' | null;
+  shipping_tier?: 'standard' | 'express' | null;
   payment_method?: string;
   payment_status?: 'pending' | 'paid' | 'refunded';
 }): Promise<ActionResult> {

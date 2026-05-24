@@ -28,9 +28,7 @@ function formatFileSize(bytes: number): string {
 
 function getFileIcon(fileName: string) {
   const ext = '.' + fileName.split('.').pop()?.toLowerCase();
-  if (['.zip', '.rar'].includes(ext)) return <Archive className="w-5 h-5" />;
-  if (['.stl', '.3mf', '.obj', '.ply', '.amf'].includes(ext)) return <Box className="w-5 h-5" />;
-  if (['.gcode'].includes(ext)) return <FileText className="w-5 h-5" />;
+  if (['.stl', '.3mf', '.obj', '.ply'].includes(ext)) return <Box className="w-5 h-5" />;
   return <File className="w-5 h-5" />;
 }
 
@@ -44,8 +42,8 @@ function getFileCategory(fileName: string): string {
 
 function validateFile(file: File): string | null {
   const ext = '.' + file.name.split('.').pop()?.toLowerCase();
-  if (!ACCEPTED_FILE_TYPES.includes(ext as typeof ACCEPTED_FILE_TYPES[number])) {
-    return `Unsupported file type: ${ext}`;
+  if (!ACCEPTED_FILE_TYPES.includes(ext as any)) {
+    return 'Unsupported file format. Please upload .stl, .obj, .3mf, .ply, .step, .stp, .f3d, .sldprt, or .sldasm';
   }
   if (file.size > MAX_FILE_SIZE) {
     return `File too large. Maximum size is ${formatFileSize(MAX_FILE_SIZE)}`;
@@ -180,7 +178,7 @@ export default function FileUploadZone({
             or <span className="font-medium" style={{ color: '#C9A84C' }}>browse from your computer</span>
           </p>
           <p className="text-xs" style={{ color: '#6B6B6B' }}>
-            STL, OBJ, STEP, F3D, SolidWorks, CATIA & more • Max {formatFileSize(MAX_FILE_SIZE)} per file
+            STL, OBJ, 3MF, PLY, STEP, F3D, SolidWorks • Max {formatFileSize(MAX_FILE_SIZE)} per file
           </p>
         </div>
       </div>

@@ -206,7 +206,7 @@ export default function ServicesPage() {
           <h2 className="page-heading text-2xl sm:text-3xl mb-4" style={{ color: '#F5F0E8' }}>Accepted File Formats</h2>
           <div className="gold-rule w-16 mx-auto mb-8" />
           <div className="flex flex-wrap gap-3 justify-center">
-            {['STL', 'OBJ', 'STEP', 'STP', '3MF', 'AMF', 'IGES', 'IGS', 'F3D', 'F3Z', 'SLDPRT', 'SLDASM', 'CATPART', 'X_T', 'X_B', 'DXF', 'DWG', 'PLY', 'GCODE', 'ZIP', 'RAR'].map((f) => (
+            {['STL', 'OBJ', '3MF', 'PLY', 'STEP', 'STP', 'F3D', 'SLDPRT', 'SLDASM'].map((f) => (
               <span
                 key={f}
                 className="text-sm px-4 py-2 rounded-lg font-mono"
@@ -217,7 +217,7 @@ export default function ServicesPage() {
             ))}
           </div>
           <p className="mt-6 text-sm" style={{ color: '#6B6B6B' }}>
-            Maximum upload size: 500 MB per file · Multiple files per order supported
+            Maximum upload size: 50 MB per file · Multiple files per order supported
           </p>
         </div>
       </section>

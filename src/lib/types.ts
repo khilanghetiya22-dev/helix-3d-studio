@@ -44,7 +44,10 @@ export interface Technology {
 }
 
 export interface Address {
+  full_name: string;
+  phone: string;
   street: string;
+  landmark?: string;
   city: string;
   state: string;
   pincode: string;
@@ -55,7 +58,10 @@ export interface UserAddress {
   id: string;
   user_id: string;
   label: string;
+  full_name: string;
+  phone: string;
   street: string;
+  landmark?: string;
   city: string;
   state: string;
   pincode: string;
@@ -91,7 +97,7 @@ export interface Order {
   shipping_fee: number | null;
   shipping_zone: string | null;
   platform_fee: number | null;
-  shipping_tier: 'standard' | 'express' | 'overnight' | null;
+  shipping_tier: 'standard' | 'express' | null;
   payment_method: string;
   payment_status: 'pending' | 'paid' | 'refunded';
   created_at: string;

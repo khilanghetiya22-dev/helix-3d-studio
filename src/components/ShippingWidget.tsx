@@ -167,9 +167,7 @@ export default function ShippingWidget({
                       <span className="text-xs font-medium" style={{ color: '#F5F0E8' }}>
                         {tier.label}
                       </span>
-                      {tier.tier === 'overnight' && (
-                        <Zap className="w-3 h-3" style={{ color: '#C9A84C' }} />
-                      )}
+
                       {tier.isFree && (
                         <span
                           className="px-1.5 py-0.5 rounded text-[9px] font-medium"

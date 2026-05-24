@@ -25,15 +25,12 @@ export default function AddressSection({ initialAddress, name, phone, onConfirm 
       setSavedAddress(initialAddress);
       setMode('confirm');
     }
-  }, [initialAddress]);
+  }, [initialAddress, savedAddress]);
 
   useEffect(() => {
     // When in confirm mode, make sure parent has the confirmed address
     if (mode === 'confirm' && savedAddress) {
       onConfirm(savedAddress);
-    } else if (mode === 'edit') {
-      // In edit mode, we don't have a confirmed address, so we don't call onConfirm yet
-      // However, we want to update the parent state when it's saved.
     }
   }, [mode, savedAddress, onConfirm]);
 
@@ -47,7 +44,6 @@ export default function AddressSection({ initialAddress, name, phone, onConfirm 
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         // Upsert logic - simpler to just insert or update where user_id = auth.uid() and is_default = true
-        // For now, we will try to fetch existing default and update, or insert new
         const { data: existing } = await supabase
           .from('user_addresses')
           .select('id')
@@ -57,16 +53,23 @@ export default function AddressSection({ initialAddress, name, phone, onConfirm 
 
         if (existing) {
           await supabase.from('user_addresses').update({
+            full_name: address.full_name,
+            phone: address.phone,
             street: address.street,
+            landmark: address.landmark || null,
             city: address.city,
             state: address.state,
             pincode: address.pincode,
             country: address.country,
+            updated_at: new Date().toISOString()
           }).eq('id', existing.id);
         } else {
           await supabase.from('user_addresses').insert({
             user_id: user.id,
+            full_name: address.full_name,
+            phone: address.phone,
             street: address.street,
+            landmark: address.landmark || null,
             city: address.city,
             state: address.state,
             pincode: address.pincode,

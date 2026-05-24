@@ -27,7 +27,10 @@ export default function ProfileAddressPage() {
         .then(({ data }) => {
           if (data) {
             setSavedAddress({
+              full_name: data.full_name || '',
+              phone: data.phone || '',
               street: data.street,
+              landmark: data.landmark || '',
               city: data.city,
               state: data.state,
               pincode: data.pincode,
@@ -55,7 +58,10 @@ export default function ProfileAddressPage() {
 
       if (existing) {
         await supabase.from('user_addresses').update({
+          full_name: address.full_name,
+          phone: address.phone,
           street: address.street,
+          landmark: address.landmark || null,
           city: address.city,
           state: address.state,
           pincode: address.pincode,
@@ -65,7 +71,10 @@ export default function ProfileAddressPage() {
       } else {
         await supabase.from('user_addresses').insert({
           user_id: user.id,
+          full_name: address.full_name,
+          phone: address.phone,
           street: address.street,
+          landmark: address.landmark || null,
           city: address.city,
           state: address.state,
           pincode: address.pincode,
@@ -157,13 +166,20 @@ export default function ProfileAddressPage() {
             </span>
           </div>
           <p className="text-sm font-medium" style={{ color: '#F5F0E8' }}>
+            {savedAddress.full_name}
+          </p>
+          <p className="text-sm mt-1" style={{ color: '#9CA3AF' }}>
             {savedAddress.street}
+            {savedAddress.landmark && `, ${savedAddress.landmark}`}
           </p>
           <p className="text-sm mt-1" style={{ color: '#9CA3AF' }}>
             {savedAddress.city}, {savedAddress.state} · {savedAddress.pincode}
           </p>
           <p className="text-sm" style={{ color: '#9CA3AF' }}>
             {savedAddress.country}
+          </p>
+          <p className="text-sm mt-2 pt-2 border-t border-[rgba(201,168,76,0.1)]" style={{ color: '#9CA3AF' }}>
+            Phone: {savedAddress.phone}
           </p>
         </div>
       ) : (

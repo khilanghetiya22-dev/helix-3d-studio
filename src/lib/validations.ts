@@ -17,10 +17,13 @@ export const signupSchema = z.object({
 });
 
 export const addressSchema = z.object({
-  street: z.string().min(1, 'Street address is required'),
+  full_name: z.string().min(2, 'Name must be at least 2 characters').max(80),
+  phone: z.string().regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number'),
+  street: z.string().min(10, 'Street address must be at least 10 characters').max(200),
+  landmark: z.string().max(100).optional().or(z.literal('')),
   city: z.string().min(1, 'City is required'),
   state: z.string().min(1, 'State is required'),
-  pincode: z.string().min(1, 'Pincode is required'),
+  pincode: z.string().regex(/^[1-9][0-9]{5}$/, 'Enter a valid 6-digit Indian pincode'),
   country: z.string().min(1, 'Country is required'),
 });
 
@@ -32,7 +35,7 @@ export const orderSchema = z.object({
   quantity: z.number().min(1, 'Quantity must be at least 1').max(1000),
   instructions: z.string().max(2000).optional().or(z.literal('')),
   address_json: addressSchema,
-  shipping_tier: z.enum(['standard', 'express', 'overnight']).nullable().optional(),
+  shipping_tier: z.enum(['standard', 'express']).nullable().optional(),
   payment_method: z.string().optional(),
   payment_status: z.enum(['pending', 'paid', 'refunded']).optional(),
 });

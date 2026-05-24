@@ -23,7 +23,7 @@ const faqs: { category: string; items: { q: string; a: string }[] }[] = [
       },
       {
         q: 'What file formats do you accept?',
-        a: 'We accept STL, OBJ, STEP / STP, 3MF, AMF, IGES / IGS, Fusion 360 (.f3d), SolidWorks (.sldprt), Parasolid (.x_t), BREP, DAE, PLY, WRL, DXF, and more. Maximum 500 MB per file.',
+        a: 'We accept STL, OBJ, 3MF, PLY, STEP / STP, Fusion 360 (.f3d), and SolidWorks (.sldprt, .sldasm). Maximum 50 MB per file.',
       },
     ],
   },

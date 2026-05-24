@@ -4,7 +4,7 @@
 // To go live: replace zone detection block with Delhivery Rate Fetch API call.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type ShippingTier = 'standard' | 'express' | 'overnight';
+export type ShippingTier = 'standard' | 'express';
 
 export interface TierResult {
   tier: ShippingTier;
@@ -51,10 +51,8 @@ const ZONES: ZoneDef[] = [
 const TIER_MULTIPLIERS: Record<ShippingTier, number> = {
   standard:  1.0,
   express:   1.9,
-  overnight: 3.2,
 };
 
-const OVERNIGHT_SURCHARGE = 30;
 const FUEL_RATE  = 0.12;
 const GST_RATE   = 0.18;
 const FREE_THRESHOLD = 999;
@@ -131,7 +129,6 @@ export function getDeliveryDateRange(zone: string, tier: ShippingTier): {
   const processingDays = tier === 'standard' ? 1 : 0;
 
   const transitDaysMap: Record<ShippingTier, Record<string, number>> = {
-    overnight: { Local: 1, 'Zone A': 1, 'Zone B': 2, 'Zone C': 2, 'Zone D': 3, 'Zone E': 3, Default: 3 },
     express:   { Local: 1, 'Zone A': 2, 'Zone B': 2, 'Zone C': 3, 'Zone D': 3, 'Zone E': 4, Default: 3 },
     standard:  { Local: 2, 'Zone A': 4, 'Zone B': 5, 'Zone C': 5, 'Zone D': 6, 'Zone E': 7, Default: 6 },
   };
@@ -159,14 +156,7 @@ export function getDeliveryDateRange(zone: string, tier: ShippingTier): {
     label = fmt(minDate);
   }
 
-  let urgencyNote: string | undefined;
-  if (tier === 'overnight' && !pastCutoff) {
-    urgencyNote = 'Order by 2 PM today for guaranteed overnight delivery';
-  } else if (tier === 'overnight' && pastCutoff) {
-    urgencyNote = `Order now for delivery by ${fmt(addBusinessDays(today, 2))}`;
-  }
-
-  return { label, urgencyNote };
+  return { label, urgencyNote: undefined };
 }
 
 // ─── Weight Calculation ────────────────────────────────────────────
@@ -178,7 +168,7 @@ function roundToHalfKg(kg: number): number {
 // ─── Tier Price Calculation ────────────────────────────────────────
 
 function calcTierPrice(baseSubtotal: number, tier: ShippingTier): number {
-  const multiplied = baseSubtotal * TIER_MULTIPLIERS[tier] + (tier === 'overnight' ? OVERNIGHT_SURCHARGE : 0);
+  const multiplied = baseSubtotal * TIER_MULTIPLIERS[tier];
   const fuel = Math.round(multiplied * FUEL_RATE);
   const gst  = Math.round((multiplied + fuel) * GST_RATE);
   return Math.round(multiplied + fuel + gst);
@@ -258,8 +248,8 @@ export function calcShipping(params: {
   // City lookup
   const cityInfo = getCityFromPincode(pincode);
 
-  // Build 3 tier options
-  const tiers: TierResult[] = (['standard', 'express', 'overnight'] as ShippingTier[]).map(tier => {
+  // Build 2 tier options (Standard + Express)
+  const tiers: TierResult[] = (['standard', 'express'] as ShippingTier[]).map(tier => {
     const price = zoneName === 'Local' ? 0 : calcTierPrice(baseSubtotal, tier);
     const isFree = tier === 'standard' && orderTotal >= FREE_THRESHOLD;
     const delivery = getDeliveryDateRange(zoneName, tier);
@@ -268,7 +258,6 @@ export function calcShipping(params: {
       label: {
         standard: 'Standard Delivery',
         express: 'Express Delivery',
-        overnight: 'Overnight / Priority',
       }[tier],
       price: isFree ? 0 : price,
       isFree,

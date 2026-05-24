@@ -10,7 +10,7 @@ import Card from '@/components/ui/Card';
 import FileUploadZone from '@/components/FileUploadZone';
 import ModelPreview3D from '@/components/ModelPreview3D';
 import PricingCard from '@/components/PricingCard';
-import { COLORS } from '@/lib/constants';
+import { COLORS, QUALITY_OPTIONS } from '@/lib/constants';
 import { submitOrder } from '@/app/actions/orders';
 import { getActiveMaterials } from '@/app/actions/materials';
 import AddressSection from '@/components/ui/AddressSection';
@@ -86,7 +86,16 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
           .eq('is_default', true)
           .maybeSingle();
         if (data) {
-          const addr = { street: data.street, city: data.city, state: data.state, pincode: data.pincode, country: data.country };
+          const addr = {
+            full_name: data.full_name || '',
+            phone: data.phone || '',
+            street: data.street,
+            landmark: data.landmark || undefined,
+            city: data.city,
+            state: data.state,
+            pincode: data.pincode,
+            country: data.country
+          };
           setInitialAddress(addr);
           setAddress(addr);
         }

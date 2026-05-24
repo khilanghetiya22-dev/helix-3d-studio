@@ -189,7 +189,7 @@ export default function PricingCard({
 
           {pricing.handlingFee !== null && (
             <CostRow
-              label="Handling (5%)"
+              label="Handling"
               value={formatCurrency(pricing.handlingFee)}
               icon={<Percent className="w-3 h-3" style={{ color: '#C9A84C' }} />}
             />
@@ -197,7 +197,7 @@ export default function PricingCard({
 
           {pricing.platformFee !== null && (
             <CostRow
-              label="Platform (10%)"
+              label="Platform fee"
               value={formatCurrency(pricing.platformFee)}
               icon={<Settings2 className="w-3 h-3" style={{ color: '#C9A84C' }} />}
             />

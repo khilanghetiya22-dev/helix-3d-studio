@@ -6,32 +6,13 @@ export const MATERIALS = [
   { value: 'pla', label: 'PLA', description: 'Most popular, easy to print' },
   { value: 'abs', label: 'ABS', description: 'Strong, heat resistant' },
   { value: 'petg', label: 'PETG', description: 'Durable, flexible' },
-  { value: 'resin', label: 'Resin', description: 'High detail, smooth finish' },
   { value: 'nylon', label: 'Nylon', description: 'Strong, flexible, durable' },
   { value: 'tpu', label: 'TPU', description: 'Flexible, rubber-like' },
-  { value: 'carbon-fiber', label: 'Carbon Fiber', description: 'Extremely strong, lightweight' },
-  { value: 'wood-fill', label: 'Wood Fill', description: 'Wood-like appearance' },
-  { value: 'metal-fill', label: 'Metal Fill', description: 'Metallic finish' },
 ] as const;
 
 export const COLORS = [
   { value: 'white', label: 'White', hex: '#FFFFFF' },
   { value: 'black', label: 'Black', hex: '#0A0A0F' },
-] as const;
-
-export const INFILL_OPTIONS = [
-  { value: 10, label: '10%', description: 'Very light, decorative only' },
-  { value: 20, label: '20%', description: 'Light, standard for most prints' },
-  { value: 30, label: '30%', description: 'Medium strength' },
-  { value: 50, label: '50%', description: 'Strong, functional parts' },
-  { value: 75, label: '75%', description: 'Very strong' },
-  { value: 100, label: '100%', description: 'Solid, maximum strength' },
-] as const;
-
-export const QUALITY_OPTIONS = [
-  { value: 'draft', label: 'Draft', description: '0.3mm layer height — Fast, visible layers', icon: '⚡' },
-  { value: 'standard', label: 'Standard', description: '0.2mm layer height — Good balance', icon: '⚖️' },
-  { value: 'fine', label: 'Fine', description: '0.1mm layer height — Smooth, detailed', icon: '✨' },
 ] as const;
 
 export const ORDER_STATUSES: StepperStep[] = [
@@ -50,38 +31,30 @@ export const STATUS_LABELS: Record<string, string> = {
   delivered: 'Delivered',
 };
 
+// V15: Only 9 file formats accepted
 export const ACCEPTED_FILE_TYPES = [
-  '.stl', '.3mf', '.obj', '.ply', '.amf',
-  '.step', '.stp', '.iges', '.igs',
-  '.f3d', '.f3z',
+  '.stl', '.obj', '.3mf', '.ply',
+  '.step', '.stp',
+  '.f3d',
   '.sldprt', '.sldasm',
-  '.catpart', '.catproduct',
-  '.x_t', '.x_b',
-  '.dxf', '.dwg',
-  '.gcode',
-  '.zip', '.rar',
 ] as const;
 
 export const ACCEPTED_FILE_TYPES_STRING = ACCEPTED_FILE_TYPES.join(',');
 
-export const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500MB
+// V15: Max 50MB per file (down from 500MB)
+export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 export const FILE_TYPE_CATEGORIES: Record<string, string[]> = {
-  'Mesh Files': ['.stl', '.3mf', '.obj', '.ply', '.amf'],
-  'CAD Files': ['.step', '.stp', '.iges', '.igs'],
-  'Fusion 360': ['.f3d', '.f3z'],
+  'Mesh Files': ['.stl', '.obj', '.3mf', '.ply'],
+  'CAD Files': ['.step', '.stp'],
+  'Fusion 360': ['.f3d'],
   'SolidWorks': ['.sldprt', '.sldasm'],
-  'CATIA': ['.catpart', '.catproduct'],
-  'Parasolid': ['.x_t', '.x_b'],
-  'Drawing': ['.dxf', '.dwg'],
-  'G-Code': ['.gcode'],
-  'Archive': ['.zip', '.rar'],
 };
 
 // File extensions that can be previewed in 3D (Three.js)
 export const PREVIEWABLE_EXTENSIONS = ['.stl', '.obj', '.ply', '.3mf'] as const;
 
-// Infill factor mapping for pricing calculations
+// Infill factor mapping for pricing calculations (fixed at 1.0 internally per V15)
 export const INFILL_FACTORS: Record<number, number> = {
   10: 0.15,
   20: 0.25,
@@ -91,3 +64,8 @@ export const INFILL_FACTORS: Record<number, number> = {
   100: 1.00,
 };
 
+export const QUALITY_OPTIONS = [
+  { value: 'draft', label: 'Draft', description: '0.3mm layer height — Fast, visible layers', icon: '⚡' },
+  { value: 'standard', label: 'Standard', description: '0.2mm layer height — Good balance', icon: '⚖️' },
+  { value: 'fine', label: 'Fine', description: '0.1mm layer height — Smooth, detailed', icon: '✨' },
+] as const;
