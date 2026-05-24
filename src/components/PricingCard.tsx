@@ -156,8 +156,7 @@ export default function PricingCard({
           )}
 
           <Row label="Material" value={`${material.name} @ ${formatCurrency(pricePerGram)}/g`} />
-          {showInfill && <Row label="Infill" value={`${infill}%`} />}
-          <Row label="Print Quality" value={qualityLabel} />
+
 
           {pricing.printTime && (
             <Row

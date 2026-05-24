@@ -10,7 +10,7 @@ import Card from '@/components/ui/Card';
 import FileUploadZone from '@/components/FileUploadZone';
 import ModelPreview3D from '@/components/ModelPreview3D';
 import PricingCard from '@/components/PricingCard';
-import { COLORS, INFILL_OPTIONS, QUALITY_OPTIONS } from '@/lib/constants';
+import { COLORS } from '@/lib/constants';
 import { submitOrder } from '@/app/actions/orders';
 import { getActiveMaterials } from '@/app/actions/materials';
 import AddressSection from '@/components/ui/AddressSection';
@@ -206,11 +206,8 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      {/* Tech Badge + Back */}
-      <div className="flex items-center justify-between mb-6">
-        <button onClick={() => router.push('/orders/new')} className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Change Technology
-        </button>
+      {/* Tech Badge */}
+      <div className="flex items-center justify-end mb-6">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary">
           <Cpu className="w-3.5 h-3.5" /> {tech.icon} {tech.name} Order
         </div>
@@ -290,36 +287,7 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
               </div>
             )}
 
-            {/* Infill (FDM only) */}
-            {showInfill && (
-              <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">Infill Percentage</label>
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                  {INFILL_OPTIONS.map((opt) => (
-                    <button key={opt.value} type="button" onClick={() => update('infill', opt.value)}
-                      className={`p-3 rounded-xl border text-center transition-all ${form.infill === opt.value ? 'border-primary bg-primary/10' : 'border-border-primary bg-bg-secondary hover:border-border-secondary'}`}>
-                      <p className="text-lg font-bold text-text-primary">{opt.label}</p>
-                      <p className="text-[10px] text-text-muted mt-0.5">{opt.description}</p>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* Quality */}
-            <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">Print Quality</label>
-              <div className="grid grid-cols-3 gap-3">
-                {QUALITY_OPTIONS.map((q) => (
-                  <button key={q.value} type="button" onClick={() => update('quality', q.value)}
-                    className={`p-4 rounded-xl border text-center transition-all ${form.quality === q.value ? 'border-primary bg-primary/10' : 'border-border-primary bg-bg-secondary hover:border-border-secondary'}`}>
-                    <p className="text-2xl mb-1">{q.icon}</p>
-                    <p className="text-sm font-semibold text-text-primary">{q.label}</p>
-                    <p className="text-[10px] text-text-muted mt-0.5">{q.description}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
 
             {/* Quantity + Instructions */}
             <div className="grid grid-cols-2 gap-4">
@@ -414,8 +382,7 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
               <div><span className="text-text-muted">Technology</span><p className="font-medium text-text-primary">{tech.icon} {tech.name}</p></div>
               <div><span className="text-text-muted">Material</span><p className="font-medium text-text-primary">{materialLabel}</p></div>
               {showColor && <div><span className="text-text-muted">Color</span><p className="font-medium text-text-primary">{colorLabel}</p></div>}
-              {showInfill && <div><span className="text-text-muted">Infill</span><p className="font-medium text-text-primary">{form.infill}%</p></div>}
-              <div><span className="text-text-muted">Quality</span><p className="font-medium text-text-primary">{qualityLabel}</p></div>
+
               <div><span className="text-text-muted">Quantity</span><p className="font-medium text-text-primary">{form.quantity}</p></div>
               <div><span className="text-text-muted">Files</span><p className="font-medium text-text-primary">{files.filter(f => !f.error).length} file(s)</p></div>
               {dimensions && (
@@ -453,8 +420,8 @@ export default function TechOrderFormPage({ params }: { params: Promise<{ techno
 
       {/* Navigation */}
       <div className="flex items-center justify-between mt-6">
-        <Button variant="ghost" onClick={step === 0 ? () => router.push('/orders/new') : prevStep} icon={<ArrowLeft className="w-4 h-4" />}>
-          {step === 0 ? 'Change Tech' : 'Back'}
+        <Button variant="ghost" onClick={step === 0 ? () => router.push('/dashboard') : prevStep} icon={<ArrowLeft className="w-4 h-4" />}>
+          {step === 0 ? 'Dashboard' : 'Back'}
         </Button>
         {step < 3 ? (
           <Button onClick={nextStep} icon={<ArrowRight className="w-4 h-4" />}>Continue</Button>
