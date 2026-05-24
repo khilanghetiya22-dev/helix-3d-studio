@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
@@ -27,9 +28,17 @@ const labelStyle = {
 } as React.CSSProperties;
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [state, setState] = useState<FormState>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    const type = searchParams.get('type');
+    if (type === 'bulk') {
+      setForm((prev) => ({ ...prev, subject: 'bulk' }));
+    }
+  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -130,6 +139,7 @@ export default function ContactForm() {
             onBlur={(e) => { e.target.style.borderColor = 'rgba(201,168,76,0.2)'; }}
           >
             <option value="">Select a topic…</option>
+            <option value="bulk">Bulk Order Enquiry</option>
             <option value="order">Order Enquiry</option>
             <option value="quote">Custom Quote Request</option>
             <option value="technical">Technical / File Help</option>

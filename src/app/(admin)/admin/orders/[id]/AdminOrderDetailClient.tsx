@@ -243,10 +243,21 @@ export default function AdminOrderDetailClient({ order, customer, files }: Admin
           <h2 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-2">
             <MapPin className="w-4 h-4 text-primary" /> Delivery
           </h2>
-          <div className="text-sm text-text-secondary bg-bg-secondary rounded-xl p-3">
-            <p className="text-text-primary font-medium">{order.address_json.street}</p>
-            <p>{order.address_json.city}, {order.address_json.state} — {order.address_json.pincode}</p>
-            <p>{order.address_json.country}</p>
+          <div className="text-sm text-text-secondary bg-bg-secondary rounded-xl p-3 space-y-1">
+            {order.address_json?.full_name && (
+              <p className="text-text-primary font-medium">{order.address_json.full_name}</p>
+            )}
+            <p className="text-text-primary">{order.address_json?.street}</p>
+            {order.address_json?.landmark && (
+              <p style={{ color: '#6B6B6B' }} className="text-xs">Landmark: {order.address_json.landmark}</p>
+            )}
+            <p>{order.address_json?.city}, {order.address_json?.state} — {order.address_json?.pincode}</p>
+            <p>{order.address_json?.country || 'India'}</p>
+            {order.address_json?.phone && (
+              <p className="text-xs mt-2 pt-2 border-t border-border-primary/50" style={{ color: '#6B6B6B' }}>
+                Phone: {order.address_json.phone.startsWith('+91') ? order.address_json.phone : `+91 ${order.address_json.phone.replace(/^(\d{5})/, '$1 ')}`}
+              </p>
+            )}
           </div>
         </Card>
       </div>

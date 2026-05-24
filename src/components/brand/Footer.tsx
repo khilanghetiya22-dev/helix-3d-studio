@@ -50,19 +50,31 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: '#C9A84C' }}>Company</h4>
             <ul className="space-y-2.5">
-              {[
-                { label: 'About Us', href: '/about' },
-                { label: 'Our Services', href: '/services' },
-                { label: 'Gallery', href: '/gallery' },
-                { label: 'FAQ', href: '/faq' },
-                { label: 'Contact', href: '/contact' },
-              ].map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className="footer-nav-link text-sm">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <a href="/services#fdm" className="footer-nav-link text-sm">
+                  FDM Printing
+                </a>
+              </li>
+              <li>
+                <a href="/services#materials" className="footer-nav-link text-sm">
+                  Materials &amp; Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/design-guide" className="footer-nav-link text-sm">
+                  Design Guidelines
+                </a>
+              </li>
+              <li>
+                <a href="/faq" className="footer-nav-link text-sm">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="footer-nav-link text-sm">
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </div>
 

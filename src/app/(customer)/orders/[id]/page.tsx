@@ -164,10 +164,21 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             <h2 className="text-base font-semibold text-text-primary mb-4 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" /> Delivery Address
             </h2>
-            <div className="text-sm text-text-secondary leading-relaxed bg-bg-secondary rounded-xl p-4">
-              <p className="text-text-primary font-medium">{o.address_json?.street}</p>
+            <div className="text-sm text-text-secondary leading-relaxed bg-bg-secondary rounded-xl p-4 space-y-1">
+              {o.address_json?.full_name && (
+                <p className="text-text-primary font-medium">{o.address_json.full_name}</p>
+              )}
+              <p className="text-text-primary">{o.address_json?.street}</p>
+              {o.address_json?.landmark && (
+                <p style={{ color: '#6B6B6B' }} className="text-xs">Landmark: {o.address_json.landmark}</p>
+              )}
               <p>{o.address_json?.city}, {o.address_json?.state} — {o.address_json?.pincode}</p>
-              <p>{o.address_json?.country}</p>
+              <p>{o.address_json?.country || 'India'}</p>
+              {o.address_json?.phone && (
+                <p className="text-xs mt-2 pt-2 border-t border-border-primary/50" style={{ color: '#6B6B6B' }}>
+                  Phone: {o.address_json.phone.startsWith('+91') ? o.address_json.phone : `+91 ${o.address_json.phone.replace(/^(\d{5})/, '$1 ')}`}
+                </p>
+              )}
             </div>
           </Card>
 

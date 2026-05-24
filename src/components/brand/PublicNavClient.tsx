@@ -35,6 +35,7 @@ const NAV_ITEMS = [
     href: '/faq',
     dropdown: [
       { label: 'FAQ', href: '/faq' },
+      { label: 'Design Guidelines', href: '/design-guide' },
       { label: 'Contact Us', href: '/contact' },
       { label: 'Gallery', href: '/gallery' },
     ],
@@ -198,15 +199,21 @@ export default function PublicNavClient({ user }: PublicNavClientProps) {
 
           {/* Desktop nav — dropdowns */}
           <div className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <NavItemWithDropdown
-                key={item.href}
-                label={item.label}
-                href={item.href}
-                items={item.dropdown}
-                isActive={pathname === item.href || pathname.startsWith(item.href + '/')}
-              />
-            ))}
+            {NAV_ITEMS.map((item) => {
+              let isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+              if (item.label === 'Help') {
+                isActive = ['/faq', '/design-guide', '/contact', '/gallery'].includes(pathname);
+              }
+              return (
+                <NavItemWithDropdown
+                  key={item.href}
+                  label={item.label}
+                  href={item.href}
+                  items={item.dropdown}
+                  isActive={isActive}
+                />
+              );
+            })}
           </div>
 
           {/* Desktop right — Account dropdown + New Order CTA */}
@@ -321,7 +328,13 @@ export default function PublicNavClient({ user }: PublicNavClientProps) {
               <button
                 onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors"
-                style={{ color: pathname.startsWith(item.href) ? '#C9A84C' : '#9CA3AF' }}
+                style={{
+                  color: (item.label === 'Help'
+                    ? ['/faq', '/design-guide', '/contact', '/gallery'].includes(pathname)
+                    : pathname.startsWith(item.href))
+                    ? '#C9A84C'
+                    : '#9CA3AF'
+                }}
               >
                 {item.label}
                 <ChevronDown

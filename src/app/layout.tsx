@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { createClient } from '@/lib/supabase/server';
+import { GlobalNavbar } from '@/components/layout/GlobalNavbar';
+import { GlobalFooter } from '@/components/layout/GlobalFooter';
 
 export const metadata: Metadata = {
   title: 'HELIX — 3D Print Studio',
@@ -12,18 +15,33 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  let profile = null;
+
+  if (user) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+    profile = data;
+  }
+
   return (
     <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className="min-h-screen" style={{ backgroundColor: '#0A0A0F', color: '#F5F0E8' }}>
-        {children}
+      <body className="min-h-screen flex flex-col" style={{ backgroundColor: '#0A0A0F', color: '#F5F0E8' }}>
+        <GlobalNavbar initialProfile={profile} />
+        <main className="flex-grow">{children}</main>
+        <GlobalFooter />
       </body>
     </html>
   );

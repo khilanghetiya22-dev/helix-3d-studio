@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { MapPin, Clock, Mail } from 'lucide-react';
 import Link from 'next/link';
 import ContactForm from './ContactForm';
@@ -12,7 +12,7 @@ const contactPoints = [
   {
     icon: <Mail className="w-5 h-5" />,
     label: 'Email',
-    value: 'hello@helix.studio',
+    value: 'khilanghetiya22@gmail.com',
     note: 'We respond within a few hours on business days',
   },
   {
@@ -108,7 +108,13 @@ export default function ContactPage() {
 
             {/* Right — contact form (client) */}
             <div className="lg:col-span-3">
-              <ContactForm />
+              <Suspense fallback={
+                <div className="rounded-xl p-8 animate-pulse text-center" style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(201,168,76,0.15)' }}>
+                  <p className="text-sm text-gray-500">Loading contact form...</p>
+                </div>
+              }>
+                <ContactForm />
+              </Suspense>
             </div>
 
           </div>

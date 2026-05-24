@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Printer } from 'lucide-react';
+import MaterialComparison from '@/components/brand/MaterialComparison';
 
 export const metadata = {
   title: 'Services — HELIX 3D Studio',
@@ -159,6 +160,13 @@ export default function ServicesPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Material Comparison */}
+      <section className="py-16 border-t animate-fade-in" style={{ borderColor: 'rgba(201,168,76,0.15)' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <MaterialComparison />
         </div>
       </section>
 

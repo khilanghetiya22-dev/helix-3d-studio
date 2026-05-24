@@ -31,7 +31,7 @@ export default function AddressConfirmCard({ address, name, phone, onChangeClick
           onClick={onChangeClick}
           className="text-xs font-medium text-[#C9A84C] flex items-center gap-1 hover:text-[#e5aa1c] transition-colors"
         >
-          Change [Change ✎]
+          [Change ✎]
         </button>
       </div>
 
